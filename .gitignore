@@ -5,6 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+*.tmp
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -124,6 +125,8 @@ dist
 
 # Stores Visual Studio Code versions used for testing Visual Studio Code extensions
 .vscode-test
+.vscode/
+.idea/
 
 # pnpm
 .pnpm-store
@@ -147,3 +150,6 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Operational system files
+.DS_Store
