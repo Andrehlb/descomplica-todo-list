@@ -123,7 +123,7 @@ The project will be prepared for an approximately **10-minute presentation**, hi
 
 ## Contributors
 
-- **André** — development, architecture, UI, and documentation.
-- **Paula** — development, data management, UI, and documentation.
+- **André** — development, UI, and documentation.
+- **Paula** — development, UI, and documentation.
 
 Both contributors share responsibility for technical decisions and the final result.

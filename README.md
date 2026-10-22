@@ -123,7 +123,7 @@ O projeto será preparado para uma **apresentação de aproximadamente 10 minuto
 
 ## Integrantes
 
-- **André** — desenvolvimento, arquitetura, interface e documentação.
-- **Paula** — desenvolvimento, gerenciamento de dados, interface e documentação.
+- **André** — desenvolvimento, interface e documentação.
+- **Paula** — desenvolvimento, interface e documentação.
 
 Ambos compartilham a responsabilidade pelas decisões técnicas e pelo resultado final.
