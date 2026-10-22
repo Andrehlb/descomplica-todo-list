@@ -123,7 +123,11 @@ The project will be prepared for an approximately **10-minute presentation**, hi
 
 ## Contributors
 
-- **André** — development, UI, and documentation.
-- **Paula** — development, UI, and documentation.
+André and Paula contribute to development, UI, and documentation.
+
+| Contributor | GitHub | LinkedIn |
+| --- | --- | --- |
+| André | [@Andrehlb](https://github.com/Andrehlb) | [André](https://www.linkedin.com/in/andrehlb) |
+| Paula | [@Paula-Thamyres](https://github.com/Paula-Thamyres) | [Paula](https://www.linkedin.com/in/paula-femina/) |
 
 Both contributors share responsibility for technical decisions and the final result.

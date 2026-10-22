@@ -123,7 +123,11 @@ O projeto será preparado para uma **apresentação de aproximadamente 10 minuto
 
 ## Integrantes
 
-- **André** — desenvolvimento, interface e documentação.
-- **Paula** — desenvolvimento, interface e documentação.
+André e Paula atuam no desenvolvimento, na interface e na documentação.
+
+| Integrante | GitHub | LinkedIn |
+| --- | --- | --- |
+| André | [@Andrehlb](https://github.com/Andrehlb) | [André](https://www.linkedin.com/in/andrehlb) |
+| Paula | [@Paula-Thamyres](https://github.com/Paula-Thamyres) | [Paula](https://www.linkedin.com/in/paula-femina/) |
 
 Ambos compartilham a responsabilidade pelas decisões técnicas e pelo resultado final.
