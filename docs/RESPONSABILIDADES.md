@@ -1,8 +1,8 @@
 # Responsabilidades | To-Do List
 
 <p>
-<a href="../README.md"><img src="assets/navigation/project-pt.svg" width="180" height="42" align="top" alt="🇧🇷 Projeto To Do List"></a><a href="../README.en.md"><img src="assets/navigation/project-en.svg" width="180" height="42" align="top" alt="🇺🇸 To Do List Project"></a><br>
-<a href="RESPONSABILIDADES.md" aria-current="page"><img src="assets/navigation/team-pt-active.svg" width="180" height="42" align="top" alt="🇧🇷 Responsabilidades — página atual"></a><a href="RESPONSIBILITIES.en.md"><img src="assets/navigation/team-en.svg" width="180" height="42" align="top" alt="🇺🇸 Responsibilities"></a>
+<a href="../README.md"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/navigation/project-pt.svg"><source media="(prefers-color-scheme: light)" srcset="assets/navigation/project-pt-light.svg"><img src="assets/navigation/project-pt-light.svg" width="180" height="42" align="top" alt="🇧🇷 Projeto To Do List"></picture></a><a href="../README.en.md"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/navigation/project-en.svg"><source media="(prefers-color-scheme: light)" srcset="assets/navigation/project-en-light.svg"><img src="assets/navigation/project-en-light.svg" width="180" height="42" align="top" alt="🇺🇸 To Do List Project"></picture></a><br>
+<a href="RESPONSABILIDADES.md" aria-current="page"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/navigation/team-pt-active.svg"><source media="(prefers-color-scheme: light)" srcset="assets/navigation/team-pt-active-light.svg"><img src="assets/navigation/team-pt-active-light.svg" width="180" height="42" align="top" alt="🇧🇷 Responsabilidades — página atual"></picture></a><a href="RESPONSIBILITIES.en.md"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/navigation/team-en.svg"><source media="(prefers-color-scheme: light)" srcset="assets/navigation/team-en-light.svg"><img src="assets/navigation/team-en-light.svg" width="180" height="42" align="top" alt="🇺🇸 Responsibilities"></picture></a>
 </p>
 
 **Projeto:** Descomplica & Venturus — Fundamentos de Desenvolvimento Web  
