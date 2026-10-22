@@ -20,17 +20,16 @@
 
 ## 2. Fase 1 — Núcleo da aplicação
 
-| Responsabilidade | André | Paula |
+| Área | Responsável | Atividades |
 | --- | --- | --- |
-| Formato dos dados da tarefa | Analisa e aprova o modelo proposto | Propõe o modelo em uma Issue; aprova o formato com André |
-| Modelo de tarefa | Implementa `task-model.js` para criar e validar objetos de tarefa | Integra o armazenamento ao modelo aprovado |
-| Avisos de alteração | Implementa `eventos.js` e o contrato de eventos acordado | Utiliza o contrato para notificar alterações nos dados |
-| Armazenamento e operações de dados | Consome a API compartilhada | Implementa `storage.js`, camada única para criar, consultar, atualizar e remover tarefas |
-| Cadastro | Formulário, comportamento da interface e integração com o armazenamento | Disponibiliza as operações de armazenamento previstas no contrato |
-| Listagem | Utiliza o contrato da lista para edição e exclusão | Renderiza a lista e os cards das tarefas |
-| Edição | Formulário de edição, ações e integração com o armazenamento | Disponibiliza as ações combinadas nos cards |
-| Conclusão | Integra os avisos de atualização da lista, quando necessário | Implementa a conclusão e atualiza o estado na interface |
-| Exclusão | Confirmação, remoção e integração com armazenamento | Disponibiliza a ação de exclusão no card |
+| Modelagem e eventos | André | Implementa `task-model.js` para criar e validar objetos de tarefa e `eventos.js` com o contrato de eventos acordado. |
+| Interface de gerenciamento | André | Cadastro: formulário, comportamento da interface e integração com o armazenamento; edição: formulário, ações e integração com o armazenamento; exclusão: confirmação, remoção e integração com o armazenamento. |
+| Persistência de dados | Paula | Implementa `storage.js`, camada única de operações CRUD para criar, consultar, atualizar e remover tarefas; integra o armazenamento ao modelo aprovado e utiliza o contrato de eventos para notificar alterações nos dados. |
+| Interface de acompanhamento | Paula | Renderiza a lista e os cards das tarefas; implementa a conclusão e atualiza o estado na interface; disponibiliza as ações combinadas de edição e exclusão nos cards. |
+
+**Formato dos dados da tarefa:** Paula propõe o modelo em uma Issue; André analisa o modelo proposto; ambos revisam e aprovam o formato.
+
+**Integração entre interfaces:** André consome a API compartilhada, utiliza o contrato da lista para edição e exclusão e integra os avisos de atualização da lista quando necessário. Paula disponibiliza as operações de armazenamento previstas no contrato para o cadastro.
 
 **Limite entre módulos:** `storage.js` concentra as operações de dados. Formulários, lista, ações e temas utilizam suas funções acordadas, evitando implementar persistência em duplicidade. Os avisos de alterações permitem atualizar os componentes afetados.
 
@@ -38,12 +37,12 @@
 
 ## 3. Fase 2 — Funcionalidades adicionais
 
-| André | Paula |
-| --- | --- |
-| **Estatísticas:** cálculos e indicadores de progresso | **Prioridades:** campo de prioridade, regras e indicadores relacionados |
-| **Prazos:** datas-limite e regras de urgência | **Filtros e pesquisa:** filtros das tarefas e interações de busca |
-| **Estrutura e navegação:** layout, cabeçalho e navegação responsiva | **Seletor de temas:** interface e lógica para escolher o tema visual |
-| **Modos de aparência:** claro, escuro e automático | **Mecanismo de idiomas:** alternância entre PT-BR e EN |
+| Área | Responsável | Atividades |
+| --- | --- | --- |
+| Indicadores e prazos | André | Estatísticas: cálculos e indicadores de progresso; prazos: datas-limite e regras de urgência. |
+| Estrutura e aparência | André | Estrutura e navegação: layout, cabeçalho e navegação responsiva; modos de aparência: claro, escuro e automático. |
+| Organização de tarefas | Paula | Prioridades: campo de prioridade, regras e indicadores relacionados; pesquisa e filtros: filtros das tarefas e interações de busca. |
+| Personalização | Paula | Seletor de temas: interface e lógica para escolher o tema visual; mecanismo de idiomas: alternância entre PT-BR e EN. |
 
 **Traduções:** cada integrante traduz e testa as funcionalidades que implementar, usando um formato de localização revisado pelos dois.
 

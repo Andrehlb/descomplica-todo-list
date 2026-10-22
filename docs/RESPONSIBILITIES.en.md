@@ -20,17 +20,16 @@
 
 ## 2. Phase 1 — Application core
 
-| Responsibility | André | Paula |
+| Area | Owner | Activities |
 | --- | --- | --- |
-| Task data format | Reviews and approves the proposed schema | Proposes the schema in a GitHub Issue; reviews and approves it with André |
-| Task model | Implements `task-model.js` for creation and validation of task objects | Integrates with the approved task model |
-| Data-change notifications | Implements `eventos.js` and the agreed event contract | Uses the event contract when storage changes |
-| Storage / data operations | Uses the shared storage API | Implements `storage.js`, the single data layer for creating, reading, updating and deleting tasks |
-| Create task | Form, UI behavior and integration with storage | Supports via the approved storage API |
-| List tasks | Uses the list contract for editing/deleting | Renders the list and task cards |
-| Edit task | Edit form, actions and integration with storage | Exposes agreed edit actions in task cards |
-| Complete task | Integrates with list update notifications as required | Completion behavior and list-state update |
-| Delete task | Confirmation, deletion behavior and storage integration | Exposes agreed delete action in task cards |
+| Modeling and events | André | Implements `task-model.js` to create and validate task objects and `eventos.js` with the agreed event contract. |
+| Management interface | André | Task creation: form, UI behavior, and storage integration; editing: form, actions, and storage integration; deletion: confirmation, removal behavior, and storage integration. |
+| Data persistence | Paula | Implements `storage.js`, the single CRUD data layer for creating, reading, updating, and deleting tasks; integrates storage with the approved task model and uses the event contract to notify data changes. |
+| Task tracking interface | Paula | Renders the list and task cards; implements completion and updates the interface state; exposes the agreed edit and delete actions in the cards. |
+
+**Task data format:** Paula proposes the schema in a GitHub Issue; André reviews the proposed schema; both review and approve the format.
+
+**Interface integration:** André uses the shared storage API and the list contract for editing and deletion, and integrates list-update notifications as required. Paula provides the storage operations specified in the contract for task creation.
 
 **Agreed boundary:** `storage.js` owns data operations; the forms, list, actions and theme interfaces call its agreed functions. This avoids duplicated persistence implementations. A data-change notification is used to refresh affected UI components.
 
@@ -38,12 +37,12 @@
 
 ## 3. Phase 2 — Additional functionality
 
-| André | Paula |
-| --- | --- |
-| **Statistics:** computations and progress indicators | **Priorities:** priority field and related rules/indicators |
-| **Deadlines:** due dates and urgency behavior | **Filters and search:** task filtering and search interactions |
-| **Page structure and navigation:** layout, header and responsive navigation | **Theme selector:** interface and logic for choosing a visual theme |
-| **Appearance modes:** light, dark and automatic modes | **Internationalization engine:** language switching between PT-BR and EN |
+| Area | Owner | Activities |
+| --- | --- | --- |
+| Indicators and deadlines | André | Statistics: computations and progress indicators; deadlines: due dates and urgency behavior. |
+| Structure and appearance | André | Page structure and navigation: layout, header, and responsive navigation; appearance modes: light, dark, and automatic. |
+| Task organization | Paula | Priorities: priority field and related rules and indicators; search and filters: task filtering and search interactions. |
+| Customization | Paula | Theme selector: interface and logic for choosing a visual theme; internationalization engine: language switching between PT-BR and EN. |
 
 **Translations:** each person translates and tests the features they implement, following one jointly reviewed localization format.
 

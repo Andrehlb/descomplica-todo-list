@@ -5,129 +5,95 @@
 <a href="docs/RESPONSABILIDADES.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/navigation/team-pt.svg"><source media="(prefers-color-scheme: light)" srcset="docs/assets/navigation/team-pt-light.svg"><img src="docs/assets/navigation/team-pt-light.svg" width="180" height="42" align="top" alt="🇧🇷 Responsabilidades"></picture></a><a href="docs/RESPONSIBILITIES.en.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/navigation/team-en.svg"><source media="(prefers-color-scheme: light)" srcset="docs/assets/navigation/team-en-light.svg"><img src="docs/assets/navigation/team-en-light.svg" width="180" height="42" align="top" alt="🇺🇸 Responsibilities"></picture></a>
 </p>
 
-Final project for the **Web Development Fundamentals / Web Programming Logic** learning track, developed collaboratively by **André** and **Paula**.
+**To Do List** is a web application project for organizing everyday tasks, identifying what needs attention, and tracking progress. It aims to bring task creation, editing, deletion, and completion into an interface with three visual themes.
 
-The project is a task management web application built with **HTML, CSS, and vanilla JavaScript**. It focuses on DOM manipulation, task management, browser storage, accessibility, responsive design, and themed user interfaces.
+Developed by **André and Paula** as the final project for the **Web Development Fundamentals / Web Programming Logic** learning track at **Descomplica & Venturus**, the project applies HTML, CSS, and vanilla JavaScript to building an application, including DOM manipulation, browser storage, responsive layouts, and accessibility.
 
-> **Project status:** In planning and development. The features below describe the agreed scope, not necessarily completed implementations.
+> **Project status:** in planning and development. The features and interactions described below are planned; the images represent visual concepts, not implemented screens.
 
 ## Planned features
 
-- Create, display, edit, complete, and delete tasks (CRUD).
-- Persist tasks locally in the browser using `localStorage`.
-- Set task priorities and deadlines.
-- Search and filter tasks.
-- Display progress and task statistics.
-- Switch between visual themes and light, dark, or automatic appearance modes.
-- Support Portuguese (Brazil) and English.
-- Provide responsive and accessible interactions.
+- **Task management:** task creation through a form, listing, editing, deletion, and marking tasks as completed.
+- **Organization:** priorities, deadlines, urgency rules, search, and filters.
+- **Tracking:** task statistics and progress indicators.
+- **Local persistence:** storing tasks in the browser using `localStorage`.
+- **Customization:** three visual themes and light, dark, and automatic appearance modes.
+- **Languages and accessibility:** Brazilian Portuguese and English support, responsive layouts, and accessible interactions.
+
+## Intended usage
+
+The planned workflow is:
+
+1. Create tasks and set priorities and deadlines when needed.
+2. Browse the list, search, and apply filters to find tasks and organize work.
+3. Edit, complete, or delete tasks and follow the progress indicators.
+4. Choose a visual theme, appearance mode, and interface language.
+
+Persistence through `localStorage` is intended to let users return to their tasks in the same browser.
 
 ## Visual themes
 
-Three visual experiences are planned. Both contributors will implement defined parts of each theme.
+The three themes propose different ways to follow the same tasks. The behaviors described here are yet to be implemented.
 
-| Theme | André | Paula |
-| --- | --- | --- |
-| **Orbit & Gravity** | Space scenery, stars, sun, and controls | Theme coordination; planets, orbits, positioning, and interactions |
-| **Sinking Island** | Theme coordination; tide and task-progress logic | Island, water, scenery, and transitions |
-| **Celestial Balance** | Lunar experience | Solar experience |
-
-## Theme Gallery
-
-**Planned visual concepts:** these previews represent the proposed theme designs, not implemented screens. On GitHub, click a thumbnail to open the original image in a new tab while keeping this README open.
+**Concept previews:** each theme has a light and a dark version. Click a thumbnail to open the original full-size image.
 
 ### Orbit & Gravity
 
+Tasks will be represented by elements of a planetary system. Task organization and urgency are intended to guide their presentation in the orbital experience, using deadline information to make the need for attention visible.
+
 <table>
   <tr><th>Light mode</th><th>Dark mode</th></tr>
   <tr>
-    <td><img src="assets/themes/orbit-gravity-light.png" width="320" alt="Orbit &amp; Gravity — light mode"></td>
-    <td><img src="assets/themes/orbit-gravity-dark.png" width="320" alt="Orbit &amp; Gravity — dark mode"></td>
+    <td><a href="assets/themes/orbit-gravity-light.png"><img src="assets/themes/orbit-gravity-light.png" width="320" alt="Orbit &amp; Gravity — light mode"></a></td>
+    <td><a href="assets/themes/orbit-gravity-dark.png"><img src="assets/themes/orbit-gravity-dark.png" width="320" alt="Orbit &amp; Gravity — dark mode"></a></td>
   </tr>
 </table>
 
-### Sinking Island
+### Sinking Island / Clean Sweep
+
+The concept presents an island threatened by water. Completing tasks is intended to lower the water level and visualize progress; the relationship between tasks, tides, and the island's recovery will follow rules that are yet to be implemented.
 
 <table>
   <tr><th>Light mode</th><th>Dark mode</th></tr>
   <tr>
-    <td><img src="assets/themes/sinking-island-light.png" width="320" alt="Sinking Island — light mode"></td>
-    <td><img src="assets/themes/sinking-island-dark.png" width="320" alt="Sinking Island — dark mode"></td>
+    <td><a href="assets/themes/sinking-island-light.png"><img src="assets/themes/sinking-island-light.png" width="320" alt="Sinking Island — light mode"></a></td>
+    <td><a href="assets/themes/sinking-island-dark.png"><img src="assets/themes/sinking-island-dark.png" width="320" alt="Sinking Island — dark mode"></a></td>
   </tr>
 </table>
 
 ### Celestial Balance
 
+The concept combines **Solar** and **Lunar** visual experiences, associated with light and dark appearance modes. It aims to offer two compositions for following tasks, integrated with the application's appearance selection.
+
 <table>
   <tr><th>Light mode</th><th>Dark mode</th></tr>
   <tr>
-    <td><img src="assets/themes/celestial-balance-light.png" width="320" alt="Celestial Balance — light mode"></td>
-    <td><img src="assets/themes/celestial-balance-dark.png" width="320" alt="Celestial Balance — dark mode"></td>
+    <td><a href="assets/themes/celestial-balance-light.png"><img src="assets/themes/celestial-balance-light.png" width="320" alt="Celestial Balance — light mode"></a></td>
+    <td><a href="assets/themes/celestial-balance-dark.png"><img src="assets/themes/celestial-balance-dark.png" width="320" alt="Celestial Balance — dark mode"></a></td>
   </tr>
 </table>
 
-## Team and responsibilities
-
-The responsibilities below reflect the division confirmed by both contributors in their conversation. They describe **implementation ownership**, not exclusive decision-making authority: shared interfaces, data contracts, and integrations are reviewed together.
-
-### Phase 1 — Core application
-
-| André | Paula |
-| --- | --- |
-| `task-model.js` — create and validate task objects | `storage.js` — data layer with create, read, update, and delete operations |
-| `eventos.js` — notify modules when task data changes | Task list rendering |
-| Task creation and form | Mark tasks as completed |
-| Task editing | |
-| Task deletion | |
-
-Paula will propose the task data format in a GitHub Issue. **Both contributors must review and approve the schema and module contracts before implementation.** UI features use the common storage functions, rather than implementing separate persistence logic.
-
-### Phase 2 — Additional features
-
-| André | Paula |
-| --- | --- |
-| Task statistics and progress indicators | Task priorities |
-| Deadlines and urgency rules | Search and filters |
-| Page structure and navigation | Theme selector |
-| Light, dark, and automatic appearance modes | Language-switching mechanism |
-
-Each contributor translates and tests the features they implement. Accessibility, integration, testing, code review, and project documentation are shared responsibilities.
-
-For the agreed division, integration guidelines, and planned GitHub Issues, see [Responsibilities](docs/RESPONSIBILITIES.en.md) *(draft for joint review)*.
-
 ## Technology stack
 
-- HTML5
-- CSS3
-- JavaScript (vanilla)
-- Browser `localStorage`
-- Git and GitHub
+- **HTML5:** page structure and semantic markup.
+- **CSS3:** responsive layouts, visual themes, and appearance modes.
+- **Vanilla JavaScript:** DOM manipulation, interactions, and task logic.
+- **`localStorage`:** planned browser persistence for tasks.
+- **Git and GitHub:** version control, collaboration, and documentation.
 
-No framework, external API, or backend is required for the core project.
+The planned core does not require a framework, external API, or backend. The current structure is static, with no package installation or build step.
 
-## Project structure
+## Academic presentation
 
-The repository currently starts from a minimal HTML/CSS/JavaScript structure. Additional modules and theme-specific styles will be created as the work progresses. Names shown in the responsibilities section reflect the planned module contracts.
+The project will be prepared for an **approximately 10-minute presentation**, highlighting the application to be developed, task operations, the three themes, code organization, and both contributors' work. The educational goal includes practicing integration, testing, accessibility, and documentation alongside web technologies.
 
-## Collaboration workflow
+## Team
 
-1. Define each feature and its acceptance criteria in a GitHub Issue.
-2. Implement changes separately, keeping commits focused on one subject.
-3. Open a Pull Request (PR) for review by the other contributor.
-4. Verify that the integration works before merging into `main`.
-5. Update documentation when an agreed interface or responsibility changes.
-
-## Presentation
-
-The project will be prepared for an approximately **10-minute presentation**, highlighting the working task manager, code organization, and contributions from both developers.
-
-## Contributors
-
-André and Paula contribute to development, UI, and documentation.
+André and Paula contribute to development, UI, and documentation, sharing technical decisions and responsibility for the final result.
 
 | Contributor | GitHub | LinkedIn |
 | --- | --- | --- |
 | André | [@Andrehlb](https://github.com/Andrehlb) | [André](https://www.linkedin.com/in/andrehlb) |
 | Paula | [@Paula-Thamyres](https://github.com/Paula-Thamyres) | [Paula](https://www.linkedin.com/in/paula-femina/) |
 
-Both contributors share responsibility for technical decisions and the final result.
+The agreed division of work and integration guidelines are in the [detailed responsibilities document](docs/RESPONSIBILITIES.en.md) *(draft for joint review)*.
