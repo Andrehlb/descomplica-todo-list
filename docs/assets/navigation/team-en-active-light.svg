@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="42" viewBox="0 0 180 42" role="img" aria-label="Responsibilities — current page">
+  <title>Responsibilities — current page</title>
+  <path d="M0 0H180V32A10 10 0 0 1 170 42H0Z" fill="#f0f3f6"/>
+  <rect x="3.5" y="2.5" width="168" height="31" rx="6" fill="#ddf4ff" stroke="#0969da"/>
+  <g transform="translate(13.0 12.5) scale(.8)"><path fill="#fff" d="M0 0h20v14H0z"/><path stroke="#b22234" stroke-width="1.08" d="M0 .54h20M0 2.69h20M0 4.85h20M0 7h20M0 9.15h20M0 11.31h20M0 13.46h20"/><path fill="#3c3b6e" d="M0 0h8.5v7.54H0z"/><path stroke="#fff" stroke-width=".65" stroke-dasharray=".65 1.05" d="M.8 1.1h7M1.6 2.4h5.7M.8 3.7h7M1.6 5h5.7M.8 6.3h7"/></g>
+  <text x="37.0" y="22.5" fill="#0550ae" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600">Responsibilities</text>
+</svg>

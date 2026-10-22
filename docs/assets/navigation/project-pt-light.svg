@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="42" viewBox="0 0 180 42" role="img" aria-label="Projeto To Do List">
+  <title>Projeto To Do List</title>
+  <path d="M10 0H180V42H0V10A10 10 0 0 1 10 0Z" fill="#f0f3f6"/>
+  <rect x="8.5" y="8.5" width="168" height="31" rx="6" fill="#ffffff" stroke="#6e7781"/>
+  <g transform="translate(18.0 18.5) scale(.8)"><path fill="#009b3a" d="M0 0h20v14H0z"/><path fill="#ffdf00" d="m10 1 9 6-9 6-9-6z"/><circle cx="10" cy="7" r="3.5" fill="#002776"/><path d="M6.7 5.9c2.4-.2 4.7.6 6.5 2" fill="none" stroke="#fff" stroke-width=".8"/><g fill="#fff"><circle cx="9" cy="8" r=".3"/><circle cx="11" cy="9" r=".3"/><circle cx="12" cy="7" r=".3"/></g></g>
+  <text x="42.0" y="28.5" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="400">Projeto To Do List</text>
+</svg>
