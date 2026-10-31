@@ -1,26 +1,10 @@
 function validateTitle(title) {
-    return typeof title === "string" && title.trim().length > 0;
+  return typeof title === "string" && title.trim().length > 0;
 }
-
-console.log("\n=== Testes: validateTitle() ===");
-
-console.log(validateTitle ("Estudar Java Script"));
-console.log(validateTitle(""));
-console.log(validateTitle("  "));
-console.log(validateTitle(123));
-console.log(validateTitle(null));
 
 function validatePriority(priority) {
-    return ["high", "medium", "low"].includes(priority);
+  return ["high", "medium", "low"].includes(priority);
 }
-
-console.log("\n=== Testes: validatePriority() ===");
-
-console.log(validatePriority("high"));
-console.log(validatePriority("medium"));
-console.log(validatePriority("low"));
-console.log(validatePriority("urgent"));
-console.log(validatePriority(null));
 
 function validateDueDate(dueDate) {
   if (dueDate === null) {
@@ -42,18 +26,61 @@ function validateDueDate(dueDate) {
   );
 }
 
-console.log("\n=== Testes: validateDueDate() ===");
+function validateDescription(description) {
+  return description == null || typeof description === "string";
+}
 
-console.log(validateDueDate("2026-10-28"));
-console.log(validateDueDate(null));
-console.log(validateDueDate("28/10/2026"));
-console.log(validateDueDate("2026-1-5"));
-console.log(validateDueDate(""));
+function validateCompleted(completed) {
+  return typeof completed === "boolean";
+}
 
-console.log("\n=== Tetes: datas de calendário ===");
+function validateCompletedAt(completedAt) {
+  if (completedAt === null) {
+    return true;
+  }
 
-console.log(validateDueDate("2026-02-30"));
-console.log(validateDueDate("2028-02-29"));
-console.log(validateDueDate("2026-02-29"));
-console.log(validateDueDate("2026-12-31"));
-console.log(validateDueDate("2027-02-29"));
+  if (typeof completedAt !== "string") {
+    return false;
+  }
+
+  const date = new Date(completedAt);
+
+  return (
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(completedAt) &&
+    !Number.isNaN(date.getTime()) &&
+    date.toISOString() === completedAt
+  );
+}
+
+function validateCompletion(completed, completedAt) {
+  if (!validateCompleted(completed) || !validateCompletedAt(completedAt)) {
+    return false;
+  }
+
+  return completed ? completedAt !== null : completedAt === null;
+}
+
+function validateTask(task) {
+  if (task === null || typeof task !== "object" || Array.isArray(task)) {
+    return false;
+  }
+
+  return (
+    validateTitle(task.title) &&
+    validateDescription(task.description) &&
+    validatePriority(task.priority) &&
+    validateDueDate(task.dueDate) &&
+    validateCompletion(task.completed, task.completedAt)
+  );
+}
+
+module.exports = {
+  validateTitle,
+  validatePriority,
+  validateDueDate,
+  validateDescription,
+  validateCompleted,
+  validateCompletedAt,
+  validateCompletion,
+  validateTask,
+};
