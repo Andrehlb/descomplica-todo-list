@@ -1,5 +1,7 @@
-const {
+var {
     validateTitle,
+    validateId,
+    validateCreatedAt,
     validatePriority,
     validateDueDate,
     validateDescription,
@@ -7,7 +9,8 @@ const {
     validateCompletedAt,
     validateCompletion,
     validateTask,
-} = require("./task-model.js");
+    createTaskData,
+} = window.TaskModel;
 
 // === Testes ===
 
@@ -18,6 +21,25 @@ console.log(validateTitle(""));
 console.log(validateTitle("  "));
 console.log(validateTitle(123));
 console.log(validateTitle(null));
+
+console.log("\n=== Testes: validateId() ===");
+
+console.log(validateId("abc123"));
+console.log(validateId(""));
+console.log(validateId("  "));
+console.log(validateId(123));
+console.log(validateId(null));
+console.log(validateId("123"));
+
+console.log("\n=== Testes: validateCreatedAt() ===");
+
+console.log(validateCreatedAt("2026-11-01T15:30:00.000Z"));
+console.log(validateCreatedAt("2026-01-01T00:00:00.000Z"));
+console.log(validateCreatedAt("2026-02-30T15:30:00.000Z"));
+console.log(validateCreatedAt("2026-11-01"));
+console.log(validateCreatedAt("data inválida"));
+console.log(validateCreatedAt(null));
+console.log(validateCreatedAt(123));
 
 console.log("\n=== Testes: validatePriority() ===");
 
@@ -81,9 +103,11 @@ console.log("\n=== Testes: validate(task) ===");
 
 const validTask = {
     title: "Estudar JavaScript",
+    id: "abc123",
     description: "Revisar funções",
     priority: "medium",
     dueDate: "2026-11-02",
+    createdAt: "2026-11-01T15:30:00.000Z",
     completed: false,
     completedAt: null
 };
@@ -101,3 +125,25 @@ console.log(validateTask({
 }));
 
 console.log(validateTask(null));
+
+console.log("\n=== Testes: createTaskData() ===");
+
+const newTask = createTaskData(
+    "Estudar JavaScript",
+    "Revisar funções",
+    "medium",
+    "2026-11-02"
+);
+
+console.log(newTask);
+console.log(createTaskData("", "Descrição", "medium", "null"));
+console.log(createTaskData("Estudar", "Descrição", "invalid", null));
+console.log(createTaskData("Estudar", "Descrição", "high", "2026-02-30"));
+
+console.log("\n=== Testes: campos obrigatórios ===");
+
+console.log(validateTask({ ...validTask, id: "" }));
+console.log(validateTask({ ...validTask, id: null }));
+console.log(validateTask({ ...validTask, createdAt: null }));
+console.log(validateTask({ ...validTask, createdAt: "data inválida" }));
+console.log(validateTask({ ...validTask, createdAt: 123 }));

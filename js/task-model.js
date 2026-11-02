@@ -2,6 +2,24 @@ function validateTitle(title) {
   return typeof title === "string" && title.trim().length > 0;
 }
 
+function validateId(id) {
+  return typeof id === "string" && id.trim().length > 0;
+}
+
+function validateCreatedAt(createdAt) {
+  if (typeof createdAt !== "string") {
+    return false;
+  }
+
+  const date = new Date(createdAt);
+
+  return (
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(createdAt) &&
+    !Number.isNaN(date.getTime()) &&
+    date.toISOString() === createdAt
+  )
+}
+
 function validatePriority(priority) {
   return ["high", "medium", "low"].includes(priority);
 }
@@ -67,15 +85,41 @@ function validateTask(task) {
 
   return (
     validateTitle(task.title) &&
+    validateId(task.id) &&
     validateDescription(task.description) &&
     validatePriority(task.priority) &&
     validateDueDate(task.dueDate) &&
+    validateCreatedAt(task.createdAt) &&
     validateCompletion(task.completed, task.completedAt)
   );
 }
 
-module.exports = {
+function createTaskData(title, description, priority, dueDate) {
+  const task = {
+    title: title,
+    description: description || null,
+    priority: priority,
+    dueDate: dueDate,
+    completed: false,
+    completedAt: null,
+  };
+
+  if (
+    !validateTitle(task.title) ||
+    !validateDescription(task.description) ||
+    !validatePriority(task.priority) ||
+    !validateDueDate(task.dueDate)
+  ) {
+    return null;
+  }
+
+  return task;
+}
+
+window.TaskModel = {
   validateTitle,
+  validateId,
+  validateCreatedAt,
   validatePriority,
   validateDueDate,
   validateDescription,
@@ -83,4 +127,5 @@ module.exports = {
   validateCompletedAt,
   validateCompletion,
   validateTask,
+  createTaskData,
 };
