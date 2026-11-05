@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List | Descomplica-Venturus</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>To Do List</h1>
+        <p>Descomplica & Venturus</p>
+    </header>
+
+    <main>
+        <!-- Form for adding new tasks -->
+        <section aria-labelledby="adding task heading">
+            <h2 id="add task-heading">Cadastre uma tarefa</h2>
+
+            <form id="task-form">
+
+                <label for="task-title">Título da tarefa:</label>
+                <input id="task-title" name="title" type="text" required>
+
+                <label for="task-description">Descrição da tarefa:</label>
+                <textarea id="task-description" name="description"></textarea>
+
+                <label for="task-priority">Prioridade:</label>
+                <select id="task-priority" name="priority">
+                    <option value="low">Baixa</option>
+                    <option value="medium">Média</option>
+                    <option value="high">Alta</option>
+                </select>
+
+                <label for="task-due-date">Prazo: </label>
+                <input id="task-due-date" name="dueDate" type="date">
+
+                <button type="submit" disabled>
+                    Adicionar tarefa
+                </button>
+
+            </form>
+
+            <p id="form-message" role="status"></p>
+        </section>
+
+        <!-- Minhas tarefas -->
+        <section aria-labelledby="task list heading">
+            <h2 id="task list-heading">Minhas tarefas</h2>
+
+            <ul id="tasks-list"></ul>
+
+            <p id="tasks-empty" hidden>
+                Nenhuma tarefa cadastrada.
+            </p>
+        </section>
+
+        <!-- Task statistics and progress -->
+        <section aria-labelledby="progress-heading">
+            <h2 id="progress-heading">Meu progresso</h2>
+
+            <p id="tasks-summary" aria-live="polite"></p>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Modules -->
+    <script src="./js/task-model.js"></script>
+    <script src="./js/eventos.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>
