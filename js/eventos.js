@@ -26,7 +26,7 @@
   }
 
   // Escuta o evento de alteração de tarefas.
-  document.addEventListener(TASKS_CHANGED, handleTasksChanged);
+  window.addEventListener(TASKS_CHANGED, handleTasksChanged);
 
   // Dsiponibiliza o módulo para outros arquivos JavaScript.
   window.TaskEvents = {
