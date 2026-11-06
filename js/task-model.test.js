@@ -136,7 +136,10 @@ const newTask = createTaskData(
 );
 
 console.log(newTask);
-console.log(createTaskData("", "Descrição", "medium", "null"));
+// Testa a rejeição de título vazio.
+console.log(createTaskData("", "Descrição", "medium", null));
+// Testa a rejeição de prazo inválido.
+console.log(createTaskData("Estudar", "Descrição", "medium", "null"));
 console.log(createTaskData("Estudar", "Descrição", "invalid", null));
 console.log(createTaskData("Estudar", "Descrição", "high", "2026-02-30"));
 // Verifica a remoção de espaços extras no título.
