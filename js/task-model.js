@@ -17,7 +17,7 @@ function validateCreatedAt(createdAt) {
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(createdAt) &&
     !Number.isNaN(date.getTime()) &&
     date.toISOString() === createdAt
-  )
+  );
 }
 
 function validatePriority(priority) {
@@ -96,10 +96,10 @@ function validateTask(task) {
 
 function createTaskData(title, description, priority, dueDate) {
   const task = {
-    title: title,
+    title: typeof title === "string" ? title.trim() : title,
     description: description || null,
     priority: priority,
-    dueDate: dueDate,
+    dueDate: dueDate === undefined ? null : dueDate,
     completed: false,
     completedAt: null,
   };

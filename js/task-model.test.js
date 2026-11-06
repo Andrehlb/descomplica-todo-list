@@ -139,6 +139,10 @@ console.log(newTask);
 console.log(createTaskData("", "Descrição", "medium", "null"));
 console.log(createTaskData("Estudar", "Descrição", "invalid", null));
 console.log(createTaskData("Estudar", "Descrição", "high", "2026-02-30"));
+// Verifica a remoção de espaços extras no título.
+console.log(createTaskData(" Estudar JavaScript ", null, "medium", null));
+// Verifica o prazo não informado.
+console.log(createTaskData("Estudar JavaScript", null, "medium", undefined));
 
 console.log("\n=== Testes: campos obrigatórios ===");
 
