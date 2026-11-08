@@ -26,12 +26,14 @@
     return new Date().toISOString();
   }
 
-  function generateId() {
-    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
-      return window.crypto.randomUUID();
-    }
+  function generateNextId(tasks) {
+    const highestId = tasks.reduce(
+      (highest, task) =>
+        Number.isSafeInteger(task.id) && task.id > highest ? task.id : highest,
+      0
+    );
 
-    return Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+    return highestId + 1;
   }
 
   function normalizeTitle(title) {
@@ -93,12 +95,12 @@
     return taskModel.validateTask(task);
   }
 
-  function buildNewTask(taskData) {
+  function buildNewTask(taskData, id) {
     const timestamp = currentTimestamp();
     const completed = taskData.completed === true;
 
     return {
-      id: generateId(),
+      id,
       title: normalizeTitle(taskData.title),
       description: normalizeOptionalField(taskData.description),
       priority: taskData.priority,
@@ -157,7 +159,7 @@
       return null;
     }
 
-    const newTask = buildNewTask(taskData);
+    const newTask = buildNewTask(taskData, generateNextId(storedTasks));
 
     if (!isValidTask(newTask)) {
       return null;

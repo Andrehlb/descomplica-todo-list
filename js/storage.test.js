@@ -2,7 +2,6 @@ const { describe, it, beforeEach, afterEach, mock } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { webcrypto } = require('node:crypto');
 
 const STORAGE_MODULE_PATH = path.join(__dirname, 'storage.js');
 const STORAGE_KEY = 'descomplica-todo:tasks';
@@ -32,6 +31,8 @@ function createFakeTaskModel() {
         : task.completedAt === null;
 
       return (
+        Number.isSafeInteger(task.id) &&
+        task.id > 0 &&
         typeof task.title === 'string' &&
         task.title.length > 0 &&
         VALID_PRIORITIES.includes(task.priority) &&
@@ -65,17 +66,13 @@ function loadStorageModule(fakeWindow) {
   new Function('window', source)(fakeWindow);
 }
 
-function createEnvironment({
-  taskModel = createFakeTaskModel(),
-  cryptoApi = webcrypto,
-} = {}) {
+function createEnvironment({ taskModel = createFakeTaskModel() } = {}) {
   const localStorage = createFakeLocalStorage();
   const eventTarget = new EventTarget();
   const changeEvents = [];
 
   const fakeWindow = {
     localStorage,
-    crypto: cryptoApi,
     CustomEvent: FakeCustomEvent,
     dispatchEvent: (event) => eventTarget.dispatchEvent(event),
     addEventListener: (type, listener) =>
@@ -119,8 +116,8 @@ describe('createTask', () => {
 
     const task = taskStorage.createTask(VALID_TASK_DATA);
 
-    assert.equal(typeof task.id, 'string');
-    assert.ok(task.id.length > 0);
+    assert.ok(Number.isSafeInteger(task.id));
+    assert.ok(task.id > 0);
     assertIsoTimestamp(task.createdAt);
     assert.equal(task.completed, false);
     assert.equal(task.completedAt, null);
@@ -161,21 +158,40 @@ describe('createTask', () => {
     assert.equal(task.completedAt, task.createdAt);
   });
 
-  it('gera ids diferentes para tarefas diferentes', () => {
+  it('gera ids inteiros sequenciais começando em 1', () => {
     const { taskStorage } = createEnvironment();
 
     const firstTask = createStoredTask(taskStorage);
     const secondTask = createStoredTask(taskStorage);
+    const thirdTask = createStoredTask(taskStorage);
 
-    assert.notEqual(firstTask.id, secondTask.id);
+    assert.deepEqual(
+      [firstTask.id, secondTask.id, thirdTask.id],
+      [1, 2, 3]
+    );
   });
 
-  it('gera id mesmo sem crypto.randomUUID', () => {
-    const { taskStorage } = createEnvironment({ cryptoApi: undefined });
+  it('não repete o id de uma tarefa excluída no meio da lista', () => {
+    const { taskStorage } = createEnvironment();
+    const firstTask = createStoredTask(taskStorage);
+    createStoredTask(taskStorage);
+    taskStorage.deleteTask(firstTask.id);
 
-    const task = createStoredTask(taskStorage);
+    const newTask = createStoredTask(taskStorage);
 
-    assert.ok(task.id.length > 0);
+    assert.equal(newTask.id, 3);
+  });
+
+  it('ignora ids salvos que não são inteiros ao gerar o próximo', () => {
+    const { taskStorage, localStorage } = createEnvironment();
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify([{ id: 'texto' }, { id: 2.5 }, { id: 7 }])
+    );
+
+    const task = taskStorage.createTask(VALID_TASK_DATA);
+
+    assert.equal(task.id, 8);
   });
 
   it('devolve null quando os dados não são um objeto', () => {
@@ -283,7 +299,7 @@ describe('dados salvos ilegíveis', () => {
     localStorage.setItem(STORAGE_KEY, CORRUPTED_JSON);
 
     assert.deepEqual(taskStorage.getTasks(), []);
-    assert.equal(taskStorage.getTaskById('qualquer-id'), null);
+    assert.equal(taskStorage.getTaskById(999), null);
   });
 });
 
@@ -326,7 +342,14 @@ describe('getTasks e getTaskById', () => {
     const { taskStorage } = createEnvironment();
 
     assert.deepEqual(taskStorage.getTasks(), []);
-    assert.equal(taskStorage.getTaskById('inexistente'), null);
+    assert.equal(taskStorage.getTaskById(999), null);
+  });
+
+  it('não encontram a tarefa quando o id vem como texto', () => {
+    const { taskStorage } = createEnvironment();
+    const task = createStoredTask(taskStorage);
+
+    assert.equal(taskStorage.getTaskById(String(task.id)), null);
   });
 
   it('encontram a tarefa pelo id', () => {
@@ -381,7 +404,7 @@ describe('updateTask', () => {
     const task = createStoredTask(taskStorage);
 
     const updatedTask = taskStorage.updateTask(task.id, {
-      id: 'outro-id',
+      id: 999,
       createdAt: '2000-01-01T00:00:00.000Z',
       completedAt: '2000-01-01T00:00:00.000Z',
       campoInventado: 'valor',
@@ -424,7 +447,7 @@ describe('updateTask', () => {
     const { taskStorage, changeEvents } = createEnvironment();
 
     assert.equal(
-      taskStorage.updateTask('inexistente', { title: 'Novo' }),
+      taskStorage.updateTask(999, { title: 'Novo' }),
       null
     );
     assert.deepEqual(changeEvents, []);
@@ -504,7 +527,7 @@ describe('deleteTask', () => {
     createStoredTask(taskStorage);
     changeEvents.length = 0;
 
-    assert.equal(taskStorage.deleteTask('inexistente'), false);
+    assert.equal(taskStorage.deleteTask(999), false);
     assert.equal(taskStorage.getTasks().length, 1);
     assert.deepEqual(changeEvents, []);
   });
