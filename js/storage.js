@@ -1,174 +1,237 @@
 (function () {
-  const STORAGE_KEY = 'descomplica.tasks';
-  const EVENT_NAME = 'tasks:changed';
+  const STORAGE_KEY = 'descomplica-todo:tasks';
+  const TASKS_CHANGED_EVENT = 'tasks:changed';
+  const EDITABLE_FIELDS = [
+    'title',
+    'description',
+    'priority',
+    'dueDate',
+    'completed',
+  ];
+  const CHANGE_TYPES = Object.freeze({
+    created: 'created',
+    updated: 'updated',
+    deleted: 'deleted',
+  });
 
-  const PROTECTED_FIELDS = ['id', 'createdAt', 'completedAt'];
+  function logError(message, ...details) {
+    console.error(`TaskStorage: ${message}`, ...details);
+  }
+
+  function isPlainObject(value) {
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  }
+
+  function currentTimestamp() {
+    return new Date().toISOString();
+  }
 
   function generateId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
       return window.crypto.randomUUID();
     }
+
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
   }
 
-  function readAll() {
+  function normalizeTitle(title) {
+    return typeof title === 'string' ? title.trim() : title;
+  }
+
+  function normalizeOptionalField(value) {
+    return value ?? null;
+  }
+
+  function readStoredTasks() {
     try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw === null) {
+      const rawTasks = window.localStorage.getItem(STORAGE_KEY);
+
+      if (rawTasks === null) {
         return [];
       }
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed : [];
+
+      const storedTasks = JSON.parse(rawTasks);
+
+      if (!Array.isArray(storedTasks)) {
+        logError('os dados salvos não são uma lista de tarefas.');
+        return null;
+      }
+
+      return storedTasks;
     } catch (error) {
-      console.error('TaskStorage: não foi possível ler as tarefas.', error);
-      return [];
+      logError('não foi possível ler as tarefas.', error);
+      return null;
     }
   }
 
-  function writeAll(tasks) {
+  function writeStoredTasks(tasks) {
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
       return true;
     } catch (error) {
-      console.error('TaskStorage: não foi possível salvar as tarefas.', error);
+      logError('não foi possível salvar as tarefas.', error);
       return false;
     }
   }
 
-  function emitChange(type, id) {
+  function emitTasksChanged(type, id) {
     window.dispatchEvent(
-      new CustomEvent(EVENT_NAME, { detail: { type: type, id: id } })
+      new window.CustomEvent(TASKS_CHANGED_EVENT, { detail: { type, id } })
     );
   }
 
   function isValidTask(task) {
-    if (
-      window.TaskModel &&
-      typeof window.TaskModel.validateTask === 'function'
-    ) {
-      return window.TaskModel.validateTask(task);
-    }
-    return true;
-  }
+    const taskModel = window.TaskModel;
 
-  function getTasks() {
-    return readAll();
-  }
-
-  function getTaskById(id) {
-    return (
-      readAll().find(function (task) {
-        return task.id === id;
-      }) || null
-    );
-  }
-
-  function createTask(taskData) {
-    if (
-      taskData === null ||
-      typeof taskData !== 'object' ||
-      Array.isArray(taskData)
-    ) {
-      return null;
+    if (!taskModel || typeof taskModel.validateTask !== 'function') {
+      logError(
+        'o TaskModel não está carregado, então a tarefa não pôde ser validada.'
+      );
+      return false;
     }
 
+    return taskModel.validateTask(task);
+  }
+
+  function buildNewTask(taskData) {
+    const timestamp = currentTimestamp();
     const completed = taskData.completed === true;
-    const now = new Date().toISOString();
 
-    const task = {
+    return {
       id: generateId(),
-      title: taskData.title,
-      description: taskData.description == null ? null : taskData.description,
+      title: normalizeTitle(taskData.title),
+      description: normalizeOptionalField(taskData.description),
       priority: taskData.priority,
-      dueDate: taskData.dueDate === undefined ? null : taskData.dueDate,
-      createdAt: now,
-      completed: completed,
-      completedAt: completed ? now : null,
+      dueDate: normalizeOptionalField(taskData.dueDate),
+      createdAt: timestamp,
+      completed,
+      completedAt: completed ? timestamp : null,
     };
-
-    if (!isValidTask(task)) {
-      return null;
-    }
-
-    const tasks = readAll();
-    tasks.push(task);
-
-    if (!writeAll(tasks)) {
-      return null;
-    }
-
-    emitChange('created', task.id);
-    return task;
   }
 
-  function updateTask(id, changes) {
-    if (
-      changes === null ||
-      typeof changes !== 'object' ||
-      Array.isArray(changes)
-    ) {
-      return null;
-    }
+  function pickEditableChanges(changes) {
+    const editableChanges = {};
 
-    const tasks = readAll();
-    const index = tasks.findIndex(function (task) {
-      return task.id === id;
-    });
-
-    if (index === -1) {
-      return null;
-    }
-
-    const current = tasks[index];
-    const updated = Object.assign({}, current);
-
-    Object.keys(changes).forEach(function (field) {
-      if (!PROTECTED_FIELDS.includes(field)) {
-        updated[field] = changes[field];
+    EDITABLE_FIELDS.forEach((field) => {
+      if (Object.hasOwn(changes, field)) {
+        editableChanges[field] = changes[field];
       }
     });
 
-    if (updated.completed !== current.completed) {
-      updated.completedAt =
-        updated.completed === true ? new Date().toISOString() : null;
+    return editableChanges;
+  }
+
+  function applyChanges(task, changes) {
+    const updatedTask = { ...task, ...pickEditableChanges(changes) };
+
+    updatedTask.title = normalizeTitle(updatedTask.title);
+    updatedTask.description = normalizeOptionalField(updatedTask.description);
+    updatedTask.dueDate = normalizeOptionalField(updatedTask.dueDate);
+
+    if (updatedTask.completed !== task.completed) {
+      updatedTask.completedAt =
+        updatedTask.completed === true ? currentTimestamp() : null;
     }
 
-    if (!isValidTask(updated)) {
+    return updatedTask;
+  }
+
+  function getTasks() {
+    const storedTasks = readStoredTasks();
+
+    return storedTasks === null ? [] : storedTasks;
+  }
+
+  function getTaskById(id) {
+    return getTasks().find((task) => task.id === id) ?? null;
+  }
+
+  function createTask(taskData) {
+    if (!isPlainObject(taskData)) {
       return null;
     }
 
-    tasks[index] = updated;
+    const storedTasks = readStoredTasks();
 
-    if (!writeAll(tasks)) {
+    if (storedTasks === null) {
       return null;
     }
 
-    emitChange('updated', id);
-    return updated;
+    const newTask = buildNewTask(taskData);
+
+    if (!isValidTask(newTask)) {
+      return null;
+    }
+
+    if (!writeStoredTasks([...storedTasks, newTask])) {
+      return null;
+    }
+
+    emitTasksChanged(CHANGE_TYPES.created, newTask.id);
+    return newTask;
+  }
+
+  function updateTask(id, changes) {
+    if (!isPlainObject(changes)) {
+      return null;
+    }
+
+    const storedTasks = readStoredTasks();
+
+    if (storedTasks === null) {
+      return null;
+    }
+
+    const taskIndex = storedTasks.findIndex((task) => task.id === id);
+
+    if (taskIndex === -1) {
+      return null;
+    }
+
+    const updatedTask = applyChanges(storedTasks[taskIndex], changes);
+
+    if (!isValidTask(updatedTask)) {
+      return null;
+    }
+
+    const updatedTasks = storedTasks.map((task, index) =>
+      index === taskIndex ? updatedTask : task
+    );
+
+    if (!writeStoredTasks(updatedTasks)) {
+      return null;
+    }
+
+    emitTasksChanged(CHANGE_TYPES.updated, id);
+    return updatedTask;
   }
 
   function deleteTask(id) {
-    const tasks = readAll();
-    const remaining = tasks.filter(function (task) {
-      return task.id !== id;
-    });
+    const storedTasks = readStoredTasks();
 
-    if (remaining.length === tasks.length) {
+    if (storedTasks === null) {
       return false;
     }
 
-    if (!writeAll(remaining)) {
+    const remainingTasks = storedTasks.filter((task) => task.id !== id);
+
+    if (remainingTasks.length === storedTasks.length) {
       return false;
     }
-    emitChange('deleted', id);
+
+    if (!writeStoredTasks(remainingTasks)) {
+      return false;
+    }
+
+    emitTasksChanged(CHANGE_TYPES.deleted, id);
     return true;
   }
 
   window.TaskStorage = {
-    getTasks: getTasks,
-    getTaskById: getTaskById,
-    createTask: createTask,
-    updateTask: updateTask,
-    deleteTask: deleteTask,
+    getTasks,
+    getTaskById,
+    createTask,
+    updateTask,
+    deleteTask,
   };
 })();
