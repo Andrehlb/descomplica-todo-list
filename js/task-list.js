@@ -3,6 +3,7 @@
   const EMPTY_MESSAGE_ID = 'tasks-empty';
   const TOGGLE_COMPLETION_ACTION = 'toggle-complete';
   const COMPLETED_CARD_CLASS = 'task-card--completed';
+  const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
   const PRIORITY_LABELS = Object.freeze({
     low: 'Baixa',
     medium: 'Média',
@@ -13,6 +14,18 @@
     return [...tasks].sort(
       (first, second) => new Date(second.createdAt) - new Date(first.createdAt)
     );
+  }
+
+  function parseTaskId(value) {
+    const text = String(value);
+
+    if (!POSITIVE_INTEGER_PATTERN.test(text)) {
+      return null;
+    }
+
+    const taskId = Number(text);
+
+    return Number.isSafeInteger(taskId) ? taskId : null;
   }
 
   function getPriorityLabel(priority) {
@@ -136,7 +149,13 @@
       return;
     }
 
-    const updatedTask = window.TaskStorage.updateTask(target.dataset.taskId, {
+    const taskId = parseTaskId(target.dataset.taskId);
+
+    if (taskId === null) {
+      return;
+    }
+
+    const updatedTask = window.TaskStorage.updateTask(taskId, {
       completed: target.checked,
     });
 
@@ -168,6 +187,7 @@
 
   window.TaskList = {
     sortTasksByNewest,
+    parseTaskId,
     getPriorityLabel,
     formatDueDate,
     formatCompletedAt,
