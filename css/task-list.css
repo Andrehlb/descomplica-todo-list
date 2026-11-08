@@ -1,0 +1,16 @@
+.task-card {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #c9c2d6;
+  border-radius: 0.5rem;
+  list-style: none;
+}
+
+.task-card--completed h3 {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-card--completed {
+  background-color: #f3f1f7;
+}
