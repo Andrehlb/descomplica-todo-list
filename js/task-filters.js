@@ -4,7 +4,7 @@
   const STATUS_COMPLETED = 'completed';
   const VALID_PRIORITIES = Object.freeze(['low', 'medium', 'high']);
   const VALID_STATUSES = Object.freeze([STATUS_PENDING, STATUS_COMPLETED]);
-  const ACCENT_MARKS_PATTERN = /[̀-ͯ]/g;
+  const ACCENT_MARKS_PATTERN = /[\u0300-\u036f]/g;
 
   function normalizeSearchText(text) {
     if (typeof text !== 'string') {
@@ -42,9 +42,10 @@
       return true;
     }
 
-    const searchableText = normalizeSearchText(
-      `${normalizeSearchText(task.title)} ${normalizeSearchText(task.description)}`
-    );
+    const searchableText = [
+      normalizeSearchText(task.title),
+      normalizeSearchText(task.description),
+    ].join(' ');
 
     return searchableText.includes(normalizedSearchText);
   }
