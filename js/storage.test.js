@@ -146,6 +146,30 @@ describe('createTask', () => {
     assert.equal(task.dueDate, null);
   });
 
+  it('usa null quando descrição e prazo chegam vazios do formulário', () => {
+    const { taskStorage } = createEnvironment();
+
+    const task = taskStorage.createTask({
+      ...VALID_TASK_DATA,
+      description: '   ',
+      dueDate: '',
+    });
+
+    assert.equal(task.description, null);
+    assert.equal(task.dueDate, null);
+  });
+
+  it('remove os espaços das pontas da descrição', () => {
+    const { taskStorage } = createEnvironment();
+
+    const task = taskStorage.createTask({
+      ...VALID_TASK_DATA,
+      description: '  Revisar funções  ',
+    });
+
+    assert.equal(task.description, 'Revisar funções');
+  });
+
   it('cria tarefa já concluída com completedAt preenchido', () => {
     const { taskStorage } = createEnvironment();
 
@@ -397,6 +421,19 @@ describe('updateTask', () => {
     });
 
     assert.equal(updatedTask.title, 'Novo título');
+  });
+
+  it('usa null quando a edição limpa a descrição e o prazo', () => {
+    const { taskStorage } = createEnvironment();
+    const task = createStoredTask(taskStorage);
+
+    const updatedTask = taskStorage.updateTask(task.id, {
+      description: '',
+      dueDate: '',
+    });
+
+    assert.equal(updatedTask.description, null);
+    assert.equal(updatedTask.dueDate, null);
   });
 
   it('ignora campos protegidos e campos desconhecidos', () => {
