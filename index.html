@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
+<body class="preview-celestial preview-dark">
     <header>
         <h1>To Do List</h1>
         <p>Descomplica & Venturus</p>
@@ -17,34 +17,98 @@
 
     <main>
         <!-- Formulário para adicionar novas tarefas -->
-        <section aria-labelledby="add-task-heading">
-            <h2 id="add-task-heading">Cadastre uma tarefa</h2>
+        <section class="task-card" aria-labelledby="add-task-heading">
+            <header class="task-card-header">
+                <h2 id="add-task-heading">
+                    <span class="heading-celestial">🌒 🌓 🌔 🌖 🌗 🌘 Nova Tarefa</span>
+                    <span class="heading-orbit">☀️🌎🪐Adicionar nova tarefa</span>
+                    <span class="heading-island">🌴🌊 Adicionar Nova Tarefa</span>
+                </h2>
+
+                <p class="orbit-description">
+                    Coloque uma nova missão no seu Sistema Solar,
+                </p>
+            </header>
 
             <form id="task-form">
 
-                <label for="task-title">Título da tarefa:</label>
-                <input id="task-title" name="title" type="text" required>
+                <!-- Título -->
+                <div class="form-field">
+                    <label for="task-title">Nome da tarefa</label>
 
-                <label for="task-description">Descrição da tarefa:</label>
-                <textarea id="task-description" name="description"></textarea>
+                    <input
+                        id="task-title"
+                        name="title"
+                        type="text"
+                        placeholder="Ex.: Estudar JavaScript..."
+                        required
+                    >
+                </div>
 
-                <label for="task-priority">Prioridade:</label>
-                <select id="task-priority" name="priority">
-                    <option value="low">Baixa</option>
-                    <option value="medium" selected>Média</option>
-                    <option value="high">Alta</option>
-                </select>
+                <!-- Descrição -->
+                <div class="form-field">
+                    <label for="task-description">Descrição</label>
 
-                <label for="task-due-date">Prazo: </label>
-                <input id="task-due-date" name="dueDate" type="date">
+                    <textarea
+                        id="task-description"
+                        name="description"
+                        rows="3"
+                        placeholder="Digita aqui, os detalhes da tarefa"
+                    ></textarea>
+                </div>
 
-                <button type="submit" disabled>
-                    Adicionar tarefa
+                <!-- Prioridade: interface em construção 👩‍💻🚧 -->
+                <div class="form-field">
+                    <label for="task-priority">Prioridade</label>
+
+                    <div class="construction-slot">
+                        👩‍💻🚧 Seletor de prioridade em construção
+                    </div>
+
+                    <!-- Preservado para o script.js existente -->
+                    <select id="task-priority" name="priority">
+                        <option value="low">Baixa</option>
+                        <option value="medium" selected>Média</option>
+                        <option value="high">Alta</option>
+                    </select>
+                </div>
+
+                <!-- Prazo -->
+                <div class="form-field">
+                    <label for="task-due-date">Prazo</label>
+
+                    <input
+                        id="task-due-date"
+                        name="dueDate"
+                        type="date"
+                    >
+                </div>
+
+                <!-- Botão de cadastro -->
+                <button class="add-task-button" type="submit">
+                    <span aria-hidden="true">+</span>
+                    Adicionar Tarefa
                 </button>
 
             </form>
 
-            <p id="form-message" role="status"></p>
+            <p id="form-message" role="status">
+               👨‍💻🚧 Área de mensagens do cadastro: validações e confirmações em desenvolvimento.
+            </p>
+
+            <!-- Elementos dos Temas em construção 👩‍💻🚧 -->
+            <div class="scene-slot" data-for="celestial">
+                👩‍💻🚧 Parte Solar em construção
+            </div>
+
+            <div class="scene-slot" data-for="orbit">
+                👩‍💻🚧 Planetas e órbitas em construção
+            </div>
+
+            <div class="scene-slot" data-for="island">
+                👩‍💻🚧 Paisagem e água em construção
+            </div>
+
         </section>
 
         <!-- Minhas tarefas -->
