@@ -1,132 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List | Descomplica-Venturus</title>
 
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/task-list.css" />
-  </head>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/task-list.css">
+</head>
 
-  <body class="preview-celestial preview-dark">
+<body class="preview-celestial preview-dark">
     <header>
-      <h1>To Do List</h1>
-      <p>Descomplica & Venturus</p>
+        <h1>To Do List</h1>
+        <p>Descomplica & Venturus</p>
     </header>
 
     <main>
-      <!-- Formulário para adicionar novas tarefas -->
-      <section class="task-card" aria-labelledby="add-task-heading">
-        <header class="task-card-header">
-          <h2 id="add-task-heading">
-            <span class="heading-celestial">🌒 🌓 🌔 🌖 🌗 🌘 Nova Tarefa</span>
-            <span class="heading-orbit">☀️🌎🪐Adicionar nova tarefa</span>
-            <span class="heading-island">🌴🌊 Adicionar Nova Tarefa</span>
-          </h2>
+        <!-- Formulário para adicionar novas tarefas -->
+        <section class="task-card" aria-labelledby="add-task-heading">
+            <header class="task-card-header">
+                <h2 id="add-task-heading">
+                    <span class="heading-celestial">🌒 🌓 🌔 🌖 🌗 🌘 Nova Tarefa</span>
+                    <span class="heading-orbit">☀️🌎🪐Adicionar nova tarefa</span>
+                    <span class="heading-island">🌴🌊 Adicionar Nova Tarefa</span>
+                </h2>
 
-          <p class="orbit-description">
-            Coloque uma nova missão no seu Sistema Solar,
-          </p>
-        </header>
+                <p class="orbit-description">
+                    Coloque uma nova missão no seu Sistema Solar,
+                </p>
+            </header>
 
-        <form id="task-form">
-          <!-- Título -->
-          <div class="form-field">
-            <label for="task-title">Nome da tarefa</label>
+            <form id="task-form">
 
-            <input
-              id="task-title"
-              name="title"
-              type="text"
-              placeholder="Ex.: Estudar JavaScript..."
-              required
-            />
-          </div>
+                <!-- Título -->
+                <div class="form-field">
+                    <label for="task-title">Nome da tarefa</label>
 
-          <!-- Descrição -->
-          <div class="form-field">
-            <label for="task-description">Descrição</label>
+                    <input
+                        id="task-title"
+                        name="title"
+                        type="text"
+                        placeholder="Ex.: Estudar JavaScript..."
+                        required
+                    >
+                </div>
 
-            <textarea
-              id="task-description"
-              name="description"
-              rows="3"
-              placeholder="Digita aqui, os detalhes da tarefa"
-            ></textarea>
-          </div>
+                <!-- Descrição -->
+                <div class="form-field">
+                    <label for="task-description">Descrição</label>
 
-          <!-- Prioridade: interface em construção 👩‍💻🚧 -->
-          <div class="form-field">
-            <label for="task-priority">Prioridade</label>
+                    <textarea
+                        id="task-description"
+                        name="description"
+                        rows="3"
+                        placeholder="Digita aqui, os detalhes da tarefa"
+                    ></textarea>
+                </div>
 
-            <div class="construction-slot">
-              👩‍💻🚧 Seletor de prioridade em construção
+                <!-- Prioridade: interface em construção 👩‍💻🚧 -->
+                <div class="form-field">
+                    <label for="task-priority">Prioridade</label>
+
+                    <div class="construction-slot">
+                        👩‍💻🚧 Seletor de prioridade em construção
+                    </div>
+
+                    <!-- Preservado para o script.js existente -->
+                    <select id="task-priority" name="priority">
+                        <option value="low">Baixa</option>
+                        <option value="medium" selected>Média</option>
+                        <option value="high">Alta</option>
+                    </select>
+                </div>
+
+                <!-- Prazo -->
+                <div class="form-field">
+                    <label for="task-due-date">Prazo</label>
+
+                    <input
+                        id="task-due-date"
+                        name="dueDate"
+                        type="date"
+                    >
+                </div>
+
+                <!-- Botão de cadastro -->
+                <button class="add-task-button" type="submit">
+                    <span aria-hidden="true">+</span>
+                    Adicionar Tarefa
+                </button>
+
+            </form>
+
+            <p id="form-message" role="status">
+               👨‍💻🚧 Área de mensagens do cadastro: validações e confirmações em desenvolvimento.
+            </p>
+
+            <!-- Elementos dos Temas em construção 👩‍💻🚧 -->
+            <div class="scene-slot" data-for="celestial">
+                👩‍💻🚧 Parte Solar em construção
             </div>
 
-            <!-- Preservado para o script.js existente -->
-            <select id="task-priority" name="priority">
-              <option value="low">Baixa</option>
-              <option value="medium" selected>Média</option>
-              <option value="high">Alta</option>
-            </select>
-          </div>
+            <div class="scene-slot" data-for="orbit">
+                👩‍💻🚧 Planetas e órbitas em construção
+            </div>
 
-          <!-- Prazo -->
-          <div class="form-field">
-            <label for="task-due-date">Prazo</label>
+            <div class="scene-slot" data-for="island">
+                👩‍💻🚧 Paisagem e água em construção
+            </div>
 
-            <input id="task-due-date" name="dueDate" type="date" />
-          </div>
+        </section>
 
-          <!-- Botão de cadastro -->
-          <button class="add-task-button" type="submit">
-            <span aria-hidden="true">+</span>
-            Adicionar Tarefa
-          </button>
-        </form>
+        <!-- Minhas tarefas -->
+        <section aria-labelledby="task-list-heading">
+            <h2 id="task-list-heading">Minhas tarefas</h2>
 
-        <p id="form-message" role="status">
-          👨‍💻🚧 Área de mensagens do cadastro: validações e confirmações em
-          desenvolvimento.
-        </p>
+            <ul id="tasks-list"></ul>
 
-        <!-- Elementos dos Temas em construção 👩‍💻🚧 -->
-        <div class="scene-slot" data-for="celestial">
-          👩‍💻🚧 Parte Solar em construção
-        </div>
+            <p id="tasks-empty" hidden>
+                Nenhuma tarefa cadastrada.
+            </p>
+        </section>
 
-        <div class="scene-slot" data-for="orbit">
-          👩‍💻🚧 Planetas e órbitas em construção
-        </div>
+        <!-- Task statistics and progress -->
+        <section aria-labelledby="progress-heading">
+            <h2 id="progress-heading">Meu progresso</h2>
 
-        <div class="scene-slot" data-for="island">
-          👩‍💻🚧 Paisagem e água em construção
-        </div>
-      </section>
+            <p id="tasks-summary" aria-live="polite"></p>
+        </section>
 
-      <!-- Minhas tarefas -->
-      <section aria-labelledby="task-list-heading">
-        <h2 id="task-list-heading">Minhas tarefas</h2>
-
-        <ul id="tasks-list"></ul>
-
-        <p id="tasks-empty" hidden>Nenhuma tarefa cadastrada.</p>
-      </section>
-
-      <!-- Task statistics and progress -->
-      <section aria-labelledby="progress-heading">
-        <h2 id="progress-heading">Meu progresso</h2>
-
-        <p id="tasks-summary" aria-live="polite"></p>
-      </section>
     </main>
 
     <!-- JavaScript Modules -->
     <script src="./js/task-model.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/eventos.js"></script>
-    <script src="./js/script.js"></script>
     <script src="./js/task-list.js"></script>
-  </body>
+    <script src="./js/script.js"></script>
+
+</body>
+
 </html>
