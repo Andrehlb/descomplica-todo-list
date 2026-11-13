@@ -1,0 +1,81 @@
+.celestial-sun {
+  --celestial-sun-body-core-color: #ffd65a;
+  --celestial-sun-body-edge-color: #f5a623;
+  --celestial-sun-ray-color: #f7b733;
+  --celestial-sun-glow-color: #ffe7a3;
+  --celestial-sun-glow-intensity: 0.55;
+
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+[data-appearance='dark'] .celestial-sun {
+  --celestial-sun-body-core-color: #ffcf4a;
+  --celestial-sun-body-edge-color: #ff9a1f;
+  --celestial-sun-ray-color: #ffb52e;
+  --celestial-sun-glow-color: #ff9a1f;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-appearance='auto'] .celestial-sun {
+    --celestial-sun-body-core-color: #ffcf4a;
+    --celestial-sun-body-edge-color: #ff9a1f;
+    --celestial-sun-ray-color: #ffb52e;
+    --celestial-sun-glow-color: #ff9a1f;
+  }
+}
+
+.celestial-sun__glow-center {
+  stop-color: var(--celestial-sun-glow-color);
+  stop-opacity: 0.9;
+}
+
+.celestial-sun__glow-edge {
+  stop-color: var(--celestial-sun-glow-color);
+  stop-opacity: 0;
+}
+
+.celestial-sun__body-core {
+  stop-color: var(--celestial-sun-body-core-color);
+}
+
+.celestial-sun__body-edge {
+  stop-color: var(--celestial-sun-body-edge-color);
+}
+
+.celestial-sun__glow {
+  opacity: var(--celestial-sun-glow-intensity);
+  transition: opacity 0.6s ease;
+}
+
+.celestial-sun__ray {
+  fill: var(--celestial-sun-ray-color);
+  animation: celestial-sun-ray-pulse 3s ease-in-out infinite alternate;
+}
+
+.celestial-sun__ray--short {
+  opacity: 0.85;
+  animation-delay: 1.5s;
+}
+
+@keyframes celestial-sun-ray-pulse {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter: brightness(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celestial-sun__glow {
+    transition: none;
+  }
+
+  .celestial-sun__ray {
+    animation: none;
+  }
+}
