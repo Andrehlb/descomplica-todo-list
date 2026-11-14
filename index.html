@@ -47,15 +47,47 @@
 
                 <!-- Descrição -->
                 <div class="form-field">
-                    <label for="task-description">Descrição</label>
+                    <label for="task-description">Descrição da Tarefa</label>
 
                     <textarea
                         id="task-description"
                         name="description"
                         rows="3"
-                        placeholder="Digita aqui, os detalhes da tarefa"
+                        placeholder="Digita aqui, os detalhes da tarefa."
                     ></textarea>
                 </div>
+                <!-- Energia: controles -->
+                <fieldset class="energy-toggle">
+                    <legend>Energia <span aria-hidden="true">ⓘ</span></legend>
+
+                    <div class="energy-options">
+
+                        <label class="energy-option solar">
+                            <input
+                                type="radio"
+                                name="energy-preview"
+                                value="solar"
+                                checked
+                            >
+                            <span class="energy-label">
+                                <span aria-hidden="true">🌞</span>
+                                Solar
+                            </span>
+                        </label>
+
+                        <label class="energy-option lunar">
+                            <input
+                                type="radio"
+                                name="energy-preview"
+                                value="lunar"
+                            >
+                            <span class="energy-label">
+                                <span aria-hidden="true">🌙</span>
+                                Lunar
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
 
                 <!-- Prioridade: interface em construção 👩‍💻🚧 -->
                 <div class="form-field">
