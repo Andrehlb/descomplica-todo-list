@@ -213,13 +213,71 @@
         <div class="layout-right">
         <!-- Minhas tarefas -->
         <section aria-labelledby="task-list-heading">
-            <h2 id="task-list-heading">Minhas tarefas</h2>
+            <!-- CABEÇALHO - Título e botão de pesquisa -->
+            <header class="task-list-header">
+                <h2 id="task-list-heading">Minhas tarefas</h2>
 
+                <button
+                    type="button"
+                    id="task-search-toggle"
+                    class="task-search-toggle"
+                    aria-label="Pesquisar tarefas"
+                    aria-expanded="false"
+                    aria-controls="task-search"
+                >
+                    🔍
+                </button>
+            </header>
+            <!-- CAMPO DE PESQUISA DE TAREFAS -->
+            <div id="task-search" class="task-search-container" hidden>
+                <label for="task-search-input">
+                    Pesquisar tarefas
+                </label>
+
+                <input
+                    type="search"
+                    id="task-search-input"
+                    name="task-search"
+                    placeholder="Pesquisar por título..."
+                    autocomplete="off"
+                />
+            </div>
+            <!-- FILTROS DE TAREFAS -->
+            <nav class="task-filters" aria-label="Filtrar tarefas">
+                <button
+                    type="button"
+                    data-filter="all"
+                    aria-pressed="true"
+                >
+                    Todas
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="solar"
+                    aria-pressed="false"
+                >
+                    Solares
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="lunar"
+                    aria-pressed="false"
+                >
+                    Lunares
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="done"
+                    aria-pressed="false"
+                >
+                    Concluídas
+                </button>
+            </nav>
             <ul id="tasks-list"></ul>
-
-            <p id="tasks-empty" hidden>
-                Nenhuma tarefa cadastrada.
-            </p>
+            <p id="tasks-empty" hidden>Nenhuma tarefa cadastrada.</p>
         </section>
 
         <!-- Task statistics and progress -->
