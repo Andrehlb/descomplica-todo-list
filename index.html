@@ -224,6 +224,8 @@
                     aria-label="Pesquisar tarefas"
                     aria-expanded="false"
                     aria-controls="task-search"
+                    disabled
+                    title="Pesquisa de tarefas em construção"
                 >
                     🔍
                 </button>
@@ -243,11 +245,12 @@
                 />
             </div>
             <!-- FILTROS DE TAREFAS -->
-            <nav class="task-filters" aria-label="Filtrar tarefas">
+            <nav class="task-filters" aria-label="Filtrar tarefas - em construção">
                 <button
                     type="button"
                     data-filter="all"
                     aria-pressed="true"
+                    disabled
                 >
                     Todas
                 </button>
@@ -256,6 +259,7 @@
                     type="button"
                     data-filter="solar"
                     aria-pressed="false"
+                    disabled
                 >
                     Solares
                 </button>
@@ -264,6 +268,7 @@
                     type="button"
                     data-filter="lunar"
                     aria-pressed="false"
+                    disabled
                 >
                     Lunares
                 </button>
@@ -272,10 +277,14 @@
                     type="button"
                     data-filter="done"
                     aria-pressed="false"
+                    disabled
                 >
                     Concluídas
                 </button>
             </nav>
+            <div class="construction-slot" role="status">
+                👩‍💻🚧 EM CONSTRUÇÃO - Listagem e renderização das tarefas, seleção, conclusão e texto riscado. Responsável: Paula.
+            </div>
             <ul id="tasks-list"></ul>
             <p id="tasks-empty" hidden>Nenhuma tarefa cadastrada.</p>
         </section>
@@ -284,6 +293,9 @@
         <section aria-labelledby="progress-heading">
             <h2 id="progress-heading">Meu progresso</h2>
 
+            <div class="construction-slot" role="status">
+                👩‍💻🚧 EM CONSTRUÇÃO - Resumo e progresso das tarefas.
+            </div>
             <p id="tasks-summary" aria-live="polite"></p>
         </section>
 
