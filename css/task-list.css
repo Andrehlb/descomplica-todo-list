@@ -1,4 +1,4 @@
-.task-card {
+#tasks-list .task-card {
   padding: 1rem;
   margin-bottom: 0.75rem;
   border: 1px solid #c9c2d6;
@@ -6,11 +6,11 @@
   list-style: none;
 }
 
-.task-card--completed h3 {
+#tasks-list .task-card--completed h3 {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
-.task-card--completed {
+#tasks-list .task-card--completed {
   background-color: #f3f1f7;
 }
