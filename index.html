@@ -9,11 +9,30 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="preview-celestial preview-dark">
-    <header>
-        <h1>To Do List</h1>
-        <p>Descomplica & Venturus</p>
-    </header>
+<body class="theme-shell preview-celestial preview-dark">
+        <header class="theme-header">
+            <div class="header-default">
+                <h1>To Do List</h1>
+                <p>by André Luiz Barbosa e Paula Thamyres Femina</p>
+                <p>Descomplica &amp; Venturus</p>
+            </div>
+
+            <div class="celestial-header">
+                <div class="celestial-header__brand">
+                    <h1>Celestial Balance</h1>
+                    <p>EQUILÍBRIO SOLAR &amp; LUNAR</p>
+                </div>
+
+                <p class="celestial-header__motto">
+                    "Harmonia entre ação e intuição."
+                </p>
+
+                <div
+                    class="celestial-header__ornaments"
+                    aria-hidden="true"
+                ></div>
+            </div>
+        </header>
 
     <main class="app-layout theme-background">
         <div class="layout-left">
@@ -144,6 +163,49 @@
 
         </section>
 
+                <section
+                    class="energy-guide"
+                    aria-labelledby="energy-guide-heading"
+                >
+                    <h2 id="energy-guide-heading">☯ Guia das Energias</h2>
+
+                    <div class="energy-guide__item energy-guide__item--solar">
+                        <img
+                            class="energy-guide__icon"
+                            src="./assets/themes/balance-celestial-dark/sol-card-energia-17-11-2026.png"
+                            alt=""
+                            width="40"
+                            height="40"
+                        />
+                        <div class="energy-guide__content">
+                            <h3>Solar = ação / produtividade</h3>
+                            <p>Ideal para executar, criar, fazer acontecer.</p>
+                        </div>
+                    </div>
+
+                    <div class="energy-guide__item energy-guide__item--lunar">
+                        <img
+                            class="energy-guide__icon"
+                            src="./assets/themes/balance-celestial-dark/lua-card-energia-17-11-2026.png"
+                            alt=""
+                            width="40"
+                            height="40"
+                        />
+                        <div class="energy-guide__content">
+                            <h3>Lunar = calma / reflexão</h3>
+                            <p>Ideal para planejar, estudar, cuidar de si.</p>
+                        </div>
+                    </div>
+
+                    <!-- Legenda visual das prioridades -->
+                    <div class="energy-guide__priorities">
+                        <h3>Cores de prioridade</h3>
+
+                        <p>🔴 Alta = vermelho (urgente)</p>
+                        <p>🟡 Média = dourado (importante)</p>
+                        <p>🔵 Baixa = azul (quando puder)</p>
+                    </div>
+                </section>
         </div>
 
         <div class="layout-center theme-scene"></div>
