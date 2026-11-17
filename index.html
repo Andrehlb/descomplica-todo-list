@@ -15,7 +15,8 @@
         <p>Descomplica & Venturus</p>
     </header>
 
-    <main>
+    <main class="app-layout theme-background">
+        <div class="layout-left">
         <!-- Formulário para adicionar novas tarefas -->
         <section class="task-card" aria-labelledby="add-task-heading">
             <header class="task-card-header">
@@ -143,6 +144,11 @@
 
         </section>
 
+        </div>
+
+        <div class="layout-center theme-scene"></div>
+
+        <div class="layout-right">
         <!-- Minhas tarefas -->
         <section aria-labelledby="task-list-heading">
             <h2 id="task-list-heading">Minhas tarefas</h2>
@@ -161,6 +167,7 @@
             <p id="tasks-summary" aria-live="polite"></p>
         </section>
 
+        </div>
     </main>
 
     <!-- JavaScript Modules -->

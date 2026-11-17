@@ -201,11 +201,11 @@ body.preview-island.preview-light {
    13 - OUTRAS SEÇÕES DA MAIN
 ========================================= */
 
-main > section:not(.task-card) {
+.layout-right > section {
     width: 100%;
     max-width: 680px;
 
-    margin: 20px auto;
+    margin: 0px;
     padding: 18px;
 
     background: var(--panel);
@@ -215,7 +215,7 @@ main > section:not(.task-card) {
     border-radius: 15px;
 }
 
-main > section:not(.task-card) h2 {
+.layout-right > section h2 {
     margin-top: 0;
 }
 
