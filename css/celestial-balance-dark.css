@@ -1,0 +1,634 @@
+/* =========================================
+   02 - CELESTIAL BALANCE: ESCURO
+========================================= */
+body.preview-celestial.preview-dark {
+    color-scheme: dark;
+
+    --page-bg: #070e27;
+    --panel: #111d3bef;
+    --field: #1b284a;
+    --text: #fff6ec;
+    --muted: #b5bad3;
+    --border: #65577d;
+    --accent: #ffd075;
+    --button-text: #513317;
+
+    --button-bg: linear-gradient(180deg, #ffe79e, #ffbd55);
+
+    --scene: url("../assets/themes/balance-celestial-dark/Vale Encantado sob o Céu Estrelado-landscape-Celestial-Balance-Dark.png");
+
+    background-image: var(--scene);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+/* Celestial Balance Dark - Superfície dos cards */
+body.preview-celestial.preview-dark .task-card,
+body.preview-celestial.preview-dark .layout-right > section {
+    background: linear-gradient(
+        155deg,
+        rgba(21, 29, 62, 0.96),
+        rgba(9, 17, 43, 0.97)
+    );
+
+    border: 1px solid rgba(220, 189, 137, 0.4);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0),
+        0 18px 42px rgba(0, 3, 22, 0.4);
+}
+
+/* Celestial Balance Dark - Composição central */
+/* Celestial Balance Dark - Sobreposições */
+/* CELESTIAL BALANCE DARK - CONTROLE DAS SOBREPOSIÇÕES */
+body.preview-celestial.preview-dark .layout-center {
+    display: block;
+    min-height: 790px;
+    background-color: transparent;
+
+    /* SOL E LUA */
+    --sol-lua-x: 20px;
+    --sol-lua-y: -30px;
+    --sol-lua-size: 72% auto;
+
+    /* ELEMENTOS ASTRAIS */
+    --astral-x: 50px;
+    --astral-y: -10px;
+    --astral-size: 100% auto;
+
+    background-image:
+        url("../assets/themes/balance-celestial-dark/celestial-sun-moon-dark.png"),
+        url("../assets/themes/balance-celestial-dark/celestial-astral-dark.png");
+
+    background-repeat: no-repeat, no-repeat;
+
+    background-size: var(--sol-lua-size), var(--astral-size);
+
+    background-position:
+        calc(50% + var(--sol-lua-x)) calc(50% + var(--sol-lua-y)),
+        calc(50% + var(--astral-x)) calc(50% + var(--astral-y));
+}
+
+/* Referência comum: 1448 x 1086 */
+body.preview-celestial.preview-dark .celestial-scene__composition {
+    width: 100%;
+    aspect-ratio: 1448 / 1086;
+
+    background-image:
+        url("../assets/themes/balance-celestial-dark/celestial-sun-moon-dark.png"),
+        url("../assets/themes/balance-celestial-dark/celestial-astral-dark.png");
+
+    background-size:
+        72% auto,
+        100% 100%;
+
+    /* 1a linha: Sol e Lua | 2a linha: Elementos astrais */
+    background-position:
+        calc(50% + 20px) calc(50% + 50px),
+        calc(50% + 50px) calc(50% + -80px);
+
+    background-repeat: no-repeat;
+}
+
+/* Responsividade do cenário -
+Celestial Balance Dark - telas menores */
+@media (max-width: 1199px) {
+    body.preview-celestial.preview-dark .layout-center {
+        min-height: clamp(340px, 75vw, 650px);
+    }
+}
+
+/* Celestial Balance Dark - enquadramento na página web */
+@media (min-width: 1200px) and (orientation: landscape) {
+    body.preview-celestial.preview-dark .app-layout {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+
+        grid-template-columns:
+            minmax(0, 22fr)
+            minmax(0, 52fr)
+            minmax(0, 26fr);
+
+        gap: 3px;
+        --celestial-height: max(790px, calc(100svh - 90px));
+    }
+
+    body.preview-celestial.preview-dark .layout-left,
+    body.preview-celestial.preview-dark .layout-center,
+    body.preview-celestial.preview-dark .layout-right {
+        min-height: var(--celestial-height);
+    }
+
+    body.preview-celestial.preview-dark .layout-left,
+    body.preview-celestial.preview-dark .layout-right {
+        max-width: none;
+        margin: 0;
+        padding: 5px;
+    }
+
+    body.preview-celestial.preview-dark .task-card,
+    body.preview-celestial.preview-dark .layout-right > section {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+
+/* Celestial Balance Dark - Card Nova Tarefa */
+body.preview-celestial.preview-dark .task-card {
+    padding: 24px;
+}
+
+/* Celestial Balance Dark - Título do Card */
+body.preview-celestial.preview-dark .task-card-header h2 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffe0a0;
+    line-height: 1.4;
+}
+
+/* Celestial Balance Dark - Campos do formulário */
+body.preview-celestial.preview-dark .form-field input,
+body.preview-celestial.preview-dark .form-field-textarea {
+    background: rgba(17, 28, 59, 0.85);
+    border: 1px solid rgba(212, 186, 142, 0.45);
+    border-radius: 12px;
+    color: #fff6ec;
+}
+
+/* Celestial Balance Dark - Rótulos do formulário */
+body.preview-celestial.preview-dark .form-field label,
+body.preview-celestial.preview-dark .energy-toggle legend {
+    color: #f3d9ad;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Celestial Balance Dark - Guia das Energias */
+body.preview-celestial.preview-dark .energy-guide {
+    margin-top: 8px;
+    padding: 20px;
+    background: linear-gradient(
+        155deg,
+        rgba(21, 29, 62, 0.96),
+        rgba(9, 17, 43, 0.97)
+    );
+    border: 1px solid rgba(220, 189, 137, 0.4);
+    border-radius: 18px;
+    box-shadow: 0 18px 42px rgba(0, 3, 22, 0.4);
+}
+
+body.preview-celestial.preview-dark .energy-guide h2 {
+    margin: 0 0 18px;
+    color: #f3d9ad;
+    font-family: Georgia, serif;
+    font-size: 18px;
+}
+
+body.preview-celestial.preview-dark .energy-guide__item {
+    margin-bottom: 16px;
+}
+
+body.preview-celestial.preview-dark .energy-guide__item h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: #fff0d0;
+}
+
+body.preview-celestial.preview-dark .energy-guide__item {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 12px;
+}
+
+body.preview-celestial.preview-dark .energy-guide__icon {
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+    flex-shrink: 0;
+    transform: scale(1.3);
+}
+
+/* =========================================
+   CELESTIAL BALANCE DARK - PAINEL DIREITO
+   Cabeçalho, pesquisa e filtros
+========================================= */
+
+/* Cabeçalho: título e botão de pesquisa */
+body.preview-celestial.preview-dark .task-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+body.preview-celestial.preview-dark .task-list-header h2 {
+    margin: 0;
+    color: #ffe0a0;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Botão de pesquisa */
+body.preview-celestial.preview-dark .task-search-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid rgba(220, 189, 137, 0.4);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+}
+
+body.preview-celestial.preview-dark .task-search-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Campo de pesquisa */
+body.preview-celestial.preview-dark .task-search-container {
+    margin-bottom: 14px;
+}
+
+body.preview-celestial.preview-dark .task-search-container[hidden] {
+    display: none;
+}
+
+body.preview-celestial.preview-dark .task-search-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+body.preview-celestial.preview-dark #task-search-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--field);
+    color: var(--text);
+    font: inherit;
+}
+
+/* Filtros das tarefas */
+body.preview-celestial.preview-dark .task-filters {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+body.preview-celestial.preview-dark .task-filters button {
+    min-width: 0;
+    padding: 10px 4px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: #222b4d;
+    color: #c7c7e4;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+body.preview-celestial.preview-dark .task-filters button[aria-pressed="true"] {
+    background: linear-gradient(120deg, #5c65e5, #8272ed);
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(130, 114, 237, 0.25);
+}
+
+body.preview-celestial.preview-dark .task-filters button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   CELESTIAL BALANCE DARK - COLUNA DIREITA
+========================================= */
+
+body.preview-celestial.preview-dark .layout-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+/* Painéis */
+body.preview-celestial.preview-dark .layout-right > section {
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid rgba(220, 189, 137, 0.4);
+    border-radius: 18px;
+    background: linear-gradient(
+        155deg,
+        rgba(21, 29, 62, 0.96),
+        rgba(9, 17, 43, 0.97)
+    );
+}
+
+body.preview-celestial.preview-dark .layout-right > section h2 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    color: #ffe0a0;
+}
+
+/* Cabeçalho */
+body.preview-celestial.preview-dark .task-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+body.preview-celestial.preview-dark .task-search-toggle {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border: 1px solid rgba(220, 189, 137, 0.4);
+    border-radius: 10px;
+    background: transparent;
+    color: #c7c9eb;
+    cursor: pointer;
+}
+
+/* Pesquisa */
+body.preview-celestial.preview-dark .task-search-container {
+    margin-bottom: 14px;
+}
+
+body.preview-celestial.preview-dark .task-search-container[hidden] {
+    display: none;
+}
+
+body.preview-celestial.preview-dark .task-search-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #c7c9eb;
+}
+
+body.preview-celestial.preview-dark #task-search-input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #49567f;
+    border-radius: 9px;
+    background: #121b38;
+    color: #ffffff;
+    font: inherit;
+}
+
+/* Filtros */
+body.preview-celestial.preview-dark .task-filters {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+body.preview-celestial.preview-dark .task-filters button {
+    min-width: 0;
+    padding: 10px 3px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: #222b4d;
+    color: #c7c9eb;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+body.preview-celestial.preview-dark .task-filters button[aria-pressed="true"] {
+    background: linear-gradient(120deg, #5c65e5, #8272ed);
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(130, 114, 237, 0.4);
+}
+
+body.preview-celestial.preview-dark .task-filters button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Lista e cards */
+body.preview-celestial.preview-dark #tasks-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body.preview-celestial.preview-dark .celestial-task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(170, 180, 220, 0.15);
+}
+
+body.preview-celestial.preview-dark .celestial-task__priority {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #ffbd5b;
+}
+
+body.preview-celestial.preview-dark .celestial-task__priority--high {
+    background: #ff6060;
+}
+
+body.preview-celestial.preview-dark .celestial-task__priority--low {
+    background: #6e94ff;
+}
+
+body.preview-celestial.preview-dark .celestial-task__symbol {
+    width: 30px;
+    flex-shrink: 0;
+    font-size: 25px;
+    text-align: center;
+}
+
+body.preview-celestial.preview-dark .celestial-task__content {
+    flex: 1;
+    min-width: 0;
+}
+
+body.preview-celestial.preview-dark .celestial-task__title {
+    display: block;
+    overflow-wrap: anywhere;
+    color: #fff6ec;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+body.preview-celestial.preview-dark .celestial-task__date {
+    display: block;
+    color: #aeb7d9;
+    font-size: 11px;
+}
+
+body.preview-celestial.preview-dark .celestial-task__status {
+    display: block;
+    color: #ffc56e;
+    font-size: 11px;
+}
+
+body.preview-celestial.preview-dark .celestial-task__status--late {
+    color: #ff7777;
+}
+
+body.preview-celestial.preview-dark .celestial-task__actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2px;
+}
+
+body.preview-celestial.preview-dark .celestial-task__actions button {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #c0c5ec;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+body.preview-celestial.preview-dark .celestial-task__actions button:hover {
+    background: rgba(130, 114, 237, 0.16);
+}
+
+body.preview-celestial.preview-dark
+    .celestial-task--done
+    .celestial-task__title {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Resumo do ciclo */
+body.preview-celestial.preview-dark .cycle-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 90px;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+body.preview-celestial.preview-dark .cycle-summary__metric {
+    min-width: 0;
+    text-align: center;
+    border-right: 1px solid rgba(170, 180, 220, 0.15);
+}
+
+body.preview-celestial.preview-dark .cycle-summary__metric strong {
+    display: block;
+    font:
+        24px Georgia,
+        serif;
+}
+
+body.preview-celestial.preview-dark .cycle-summary__metric span {
+    color: #b8bfdd;
+    font-size: 10px;
+}
+
+body.preview-celestial.preview-dark .cycle-summary__ring {
+    --progress: 0%;
+    width: 86px;
+    height: 86px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background:
+        radial-gradient(closest-side, #111a36 78%, transparent 80%),
+        conic-gradient(
+            #8278f7 var(--progress),
+            #ffc56e var(--progress),
+            #353d5d 0
+        );
+}
+
+body.preview-celestial.preview-dark .cycle-summary__ring strong {
+    font-size: 17px;
+}
+
+/* Acessibilidade e responsividade */
+body.preview-celestial.preview-dark .layout-right button:focus-visible,
+body.preview-celestial.preview-dark #task-search-input:focus-visible {
+    outline: 2px solid #ffd075;
+    outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+    body.preview-celestial.preview-dark .layout-right > section {
+        padding: 14px;
+    }
+
+    body.preview-celestial.preview-dark .celestial-task {
+        gap: 6px;
+    }
+
+    body.preview-celestial.preview-dark .celestial-task__actions button {
+        width: 26px;
+    }
+
+    body.preview-celestial.preview-dark .cycle-summary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.preview-celestial.preview-dark .cycle-summary__ring {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+}
+
+/* Celestial Balance Dark - Botão de conclusão */
+body.preview-celestial.preview-dark .celestial-task__complete {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #bfc5ed;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+body.preview-celestial.preview-dark .celestial-task__complete:hover {
+    color: #ffd075;
+    background: rgba(130, 114, 237, 0.12);
+}
+
+body.preview-celestial.preview-dark .celestial-task__complete:focus-visible {
+    outline: 2px solid #ffd075;
+    outline-offset: 2px;
+}
