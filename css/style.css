@@ -20,25 +20,12 @@ body.preview-celestial.preview-light {
     --accent: #d89b38;
     --button-text: #583819;
 
-    --button-bg: linear-gradient(
-        180deg,
-        #fff0b5,
-        #ffcb69
-    );
+    --button-bg: linear-gradient(180deg, #fff0b5, #ffcb69);
 
     --scene:
-        radial-gradient(
-            ellipse at 85% 20%,
-            #ded3ff 0%,
-            transparent 46%
-        ),
-        linear-gradient(
-            145deg,
-            #e7f0ff,
-            #fff1e0
-        );
+        radial-gradient(ellipse at 85% 20%, #ded3ff 0%, transparent 46%),
+        linear-gradient(145deg, #e7f0ff, #fff1e0);
 }
-
 
 /* =========================================
    04 - ORBIT & GRAVITY: ESCURO
@@ -56,30 +43,13 @@ body.preview-orbit.preview-dark {
     --accent: #668aff;
     --button-text: #ffffff;
 
-    --button-bg: linear-gradient(
-        135deg,
-        #526dff,
-        #454df3
-    );
+    --button-bg: linear-gradient(135deg, #526dff, #454df3);
 
     --scene:
-        radial-gradient(
-            ellipse at 80% 10%,
-            #4e488e 0%,
-            transparent 48%
-        ),
-        radial-gradient(
-            ellipse at 15% 78%,
-            #16417d 0%,
-            transparent 48%
-        ),
-        linear-gradient(
-            145deg,
-            #040b20,
-            #102858
-        );
+        radial-gradient(ellipse at 80% 10%, #4e488e 0%, transparent 48%),
+        radial-gradient(ellipse at 15% 78%, #16417d 0%, transparent 48%),
+        linear-gradient(145deg, #040b20, #102858);
 }
-
 
 /* =========================================
    05 - ORBIT & GRAVITY: CLARO
@@ -97,25 +67,12 @@ body.preview-orbit.preview-light {
     --accent: #5674ff;
     --button-text: #ffffff;
 
-    --button-bg: linear-gradient(
-        135deg,
-        #526dff,
-        #454df3
-    );
+    --button-bg: linear-gradient(135deg, #526dff, #454df3);
 
     --scene:
-        radial-gradient(
-            ellipse at 75% 15%,
-            #d5d9ff 0%,
-            transparent 46%
-        ),
-        linear-gradient(
-            145deg,
-            #f8fbff,
-            #e4eeff
-        );
+        radial-gradient(ellipse at 75% 15%, #d5d9ff 0%, transparent 46%),
+        linear-gradient(145deg, #f8fbff, #e4eeff);
 }
-
 
 /* =========================================
    06 - SINKING ISLAND: ESCURO
@@ -133,30 +90,13 @@ body.preview-island.preview-dark {
     --accent: #12aaff;
     --button-text: #ffffff;
 
-    --button-bg: linear-gradient(
-        180deg,
-        #159fff,
-        #0062dc
-    );
+    --button-bg: linear-gradient(180deg, #159fff, #0062dc);
 
     --scene:
-        radial-gradient(
-            ellipse at 18% 12%,
-            #12664f 0%,
-            transparent 43%
-        ),
-        radial-gradient(
-            ellipse at 85% 60%,
-            #087a86 0%,
-            transparent 50%
-        ),
-        linear-gradient(
-            175deg,
-            #09213c,
-            #00618b
-        );
+        radial-gradient(ellipse at 18% 12%, #12664f 0%, transparent 43%),
+        radial-gradient(ellipse at 85% 60%, #087a86 0%, transparent 50%),
+        linear-gradient(175deg, #09213c, #00618b);
 }
-
 
 /* =========================================
    07 - SINKING ISLAND: CLARO
@@ -174,28 +114,12 @@ body.preview-island.preview-light {
     --accent: #008cff;
     --button-text: #ffffff;
 
-    --button-bg: linear-gradient(
-        180deg,
-        #159fff,
-        #0062dc
-    );
+    --button-bg: linear-gradient(180deg, #159fff, #0062dc);
 
     --scene:
-        radial-gradient(
-            ellipse at 14% 10%,
-            #bbefa7 0%,
-            transparent 42%
-        ),
-        radial-gradient(
-            ellipse at 85% 80%,
-            #23b5d9 0%,
-            transparent 45%
-        ),
-        linear-gradient(
-            175deg,
-            #a3e0ff,
-            #30b9db
-        );
+        radial-gradient(ellipse at 14% 10%, #bbefa7 0%, transparent 42%),
+        radial-gradient(ellipse at 85% 80%, #23b5d9 0%, transparent 45%),
+        linear-gradient(175deg, #a3e0ff, #30b9db);
 }
 
 /* =========================================
@@ -219,7 +143,6 @@ body.preview-island.preview-light {
 .layout-right > section h2 {
     margin-top: 0;
 }
-
 
 /* =========================================
    14 - APRESENTAÇÃO EM TELAS MENORES

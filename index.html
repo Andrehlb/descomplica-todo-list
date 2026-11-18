@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>To Do List | Descomplica-Venturus</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List | Descomplica-Venturus</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
 
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body class="theme-shell preview-celestial preview-dark">
+    <body class="theme-shell preview-celestial preview-dark">
         <header class="theme-header">
             <div class="header-default">
                 <h1>To Do List</h1>
@@ -33,136 +32,228 @@
                 ></div>
             </div>
         </header>
+        <div
+            class="construction-slot"
+            role="status"
+            title="Responsável: Andrehlb"
+            data-feature="appearance-modes"
+        >
+            🚧 EM CONSTRUÇÃO - Modos claro, escuro e automático.
+        </div>
 
-    <main class="app-layout theme-background">
-        <div class="layout-left">
-        <!-- Formulário para adicionar novas tarefas -->
-        <section class="task-card" aria-labelledby="add-task-heading">
-            <header class="task-card-header">
-                <h2 id="add-task-heading">
-                    <span class="heading-celestial">🌒 🌓 🌔 🌖 🌗 🌘 Nova Tarefa</span>
-                    <span class="heading-orbit">☀️🌎🪐Adicionar nova tarefa</span>
-                    <span class="heading-island">🌴🌊 Adicionar Nova Tarefa</span>
-                </h2>
-
-                <p class="orbit-description">
-                    Coloque uma nova missão no seu Sistema Solar,
-                </p>
-            </header>
-
-            <form id="task-form">
-
-                <!-- Título -->
-                <div class="form-field">
-                    <label for="task-title">Nome da tarefa</label>
-
-                    <input
-                        id="task-title"
-                        name="title"
-                        type="text"
-                        placeholder="Ex.: Estudar JavaScript..."
-                        required
-                    >
-                </div>
-
-                <!-- Descrição -->
-                <div class="form-field">
-                    <label for="task-description">Descrição da Tarefa</label>
-
-                    <textarea
-                        id="task-description"
-                        name="description"
-                        rows="3"
-                        placeholder="Digita aqui, os detalhes da tarefa."
-                    ></textarea>
-                </div>
-                <!-- Energia: controles -->
-                <fieldset class="energy-toggle">
-                    <legend>Energia <span aria-hidden="true">ⓘ</span></legend>
-
-                    <div class="energy-options">
-
-                        <label class="energy-option solar">
-                            <input
-                                type="radio"
-                                name="energy-preview"
-                                value="solar"
-                                checked
+        <div
+            class="construction-slot"
+            role="status"
+            title="Responsável: Paula"
+            data-feature="theme-selector"
+        >
+            🚧 EM CONSTRUÇÃO - Seletor dos temas Celestial Balance, Orbit &amp;
+            Gravity e Sinking Island.
+        </div>
+        <div
+            class="construction-slot"
+            role="status"
+            title="Responsável: Paula"
+            data-feature="language-selector"
+        >
+            🚧 EM CONSTRUÇÃO - Mecanismo de idiomas PT-BR e EN.
+        </div>
+        <main class="app-layout theme-background">
+            <!-- LADO ESQUERDO - Cadastro de tarefas e Guia das Energias -->
+            <div class="layout-left">
+                <!-- Formulário para adicionar novas tarefas -->
+                <section class="task-card" aria-labelledby="add-task-heading">
+                    <header class="task-card-header">
+                        <h2 id="add-task-heading">
+                            <span class="heading-celestial"
+                                >🌒 🌓 🌔 🌖 🌗 🌘 Nova Tarefa</span
                             >
-                            <span class="energy-label">
-                                <span aria-hidden="true">🌞</span>
-                                Solar
-                            </span>
-                        </label>
-
-                        <label class="energy-option lunar">
-                            <input
-                                type="radio"
-                                name="energy-preview"
-                                value="lunar"
+                            <span class="heading-orbit"
+                                >☀️🌎🪐Adicionar nova tarefa</span
                             >
-                            <span class="energy-label">
-                                <span aria-hidden="true">🌙</span>
-                                Lunar
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-
-                <!-- Prioridade: interface em construção 👩‍💻🚧 -->
-                <div class="form-field">
-                    <label for="task-priority">Prioridade</label>
-
-                    <div class="construction-slot">
-                        👩‍💻🚧 Seletor de prioridade em construção
-                    </div>
-
-                    <!-- Preservado para o script.js existente -->
-                    <select id="task-priority" name="priority">
-                        <option value="low">Baixa</option>
-                        <option value="medium" selected>Média</option>
-                        <option value="high">Alta</option>
-                    </select>
-                </div>
-
-                <!-- Prazo -->
-                <div class="form-field">
-                    <label for="task-due-date">Prazo</label>
-
-                    <input
-                        id="task-due-date"
-                        name="dueDate"
-                        type="date"
+                            <span class="heading-island"
+                                >🌴🌊 Adicionar Nova Tarefa</span
+                            >
+                        </h2>
+                        <p class="orbit-description">
+                            Coloque uma nova missão no seu Sistema Solar,
+                        </p>
+                    </header>
+                    <div
+                        class="construction-slot"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="task-registration"
                     >
-                </div>
+                        🚧 EM CONSTRUÇÃO - Integração e validação do cadastro de
+                        tarefas.
+                    </div>
+                    <form id="task-form">
+                        <!-- Título -->
+                        <div class="form-field">
+                            <label for="task-title">Nome da tarefa</label>
+                            <input
+                                id="task-title"
+                                name="title"
+                                type="text"
+                                placeholder="Ex.: Estudar JavaScript..."
+                                required
+                            />
+                        </div>
+                        <!-- Descrição -->
+                        <div class="form-field">
+                            <label for="task-description"
+                                >Descrição da Tarefa</label
+                            >
+                            <textarea
+                                id="task-description"
+                                name="description"
+                                rows="3"
+                                placeholder="Digita aqui, os detalhes da tarefa."
+                            ></textarea>
+                        </div>
+                        <!-- Energia: controles -->
+                        <fieldset class="energy-toggle">
+                            <legend>
+                                Energia <span aria-hidden="true">ⓘ</span>
+                            </legend>
+                            <div class="energy-options">
+                                <label class="energy-option solar">
+                                    <input
+                                        type="radio"
+                                        name="energy-preview"
+                                        value="solar"
+                                        checked
+                                    />
+                                    <span class="energy-label">
+                                        <span aria-hidden="true">🌞</span>
+                                        Solar
+                                    </span>
+                                </label>
+                                <label class="energy-option lunar">
+                                    <input
+                                        type="radio"
+                                        name="energy-preview"
+                                        value="lunar"
+                                    />
+                                    <span class="energy-label">
+                                        <span aria-hidden="true">🌙</span>
+                                        Lunar
+                                    </span>
+                                </label>
+                            </div>
+                        </fieldset>
+                        <!-- Prioridade: interface em construção 👩‍💻🚧 -->
+                        <div class="form-field">
+                            <label for="task-priority">Prioridade</label>
+                            <div
+                                class="construction-slot"
+                                role="status"
+                                title="responsável: Paula"
+                                data-feature="task-priorities"
+                            >
+                                👩‍💻🚧 Seletor de prioridade em construção
+                            </div>
+                            <!-- Preservado para o script.js existente -->
+                            <select id="task-priority" name="priority">
+                                <option value="low">Baixa</option>
+                                <option value="medium" selected>Média</option>
+                                <option value="high">Alta</option>
+                            </select>
+                        </div>
+                        <!-- Prazo -->
+                        <div class="form-field">
+                            <label for="task-due-date">Prazo</label>
+                            <div
+                                class="construction-slot"
+                                role="status"
+                                title="Responsável: Andrehlb"
+                                data-feature="task-deadlines"
+                            >
+                                🚧 EM CONSTRUÇÃO - Regras de prazo e cálculo de
+                                urgência.
+                            </div>
+                            <input
+                                id="task-due-date"
+                                name="dueDate"
+                                type="date"
+                            />
+                        </div>
+                        <!-- Botão de cadastro -->
+                        <button class="add-task-button" type="submit">
+                            <span aria-hidden="true">+</span>
+                            Adicionar Tarefa
+                        </button>
+                    </form>
+                    <p
+                        id="form-message"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="task-registration-messages"
+                    >
+                        👨‍💻🚧 em construção, mensagens do cadastro: validações e
+                        confirmações em desenvolvimento.
+                    </p>
+                    <!-- Elementos dos Temas em construção 👩‍💻🚧 -->
+                    <div
+                        class="scene-slot"
+                        data-for="celestial"
+                        role="status"
+                        title="responsável: Paula"
+                        data-feature="celestial-solar"
+                    >
+                        👩‍💻🚧 Parte Solar em construção
+                    </div>
+                    <div
+                        class="scene-slot"
+                        data-for="celestial"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="celestial-lunar"
+                    >
+                        🚧 EM CONSTRUÇÃO - Parte Lunar do Celestial Balance.
+                    </div>
+                    <div
+                        class="scene-slot"
+                        data-for="orbit"
+                        role="status"
+                        title="responsável: Paula"
+                        data-feature="orbit-planets"
+                    >
+                        👩‍💻🚧 Planetas e órbitas em construção
+                    </div>
+                    <div
+                        class="scene-slot"
+                        data-for="orbit"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="orbit-scene-controls"
+                    >
+                        🚧 EM CONSTRUÇÃO - Cenário espacial, estrelas, Sol e
+                        controles.
+                    </div>
+                    <div
+                        class="scene-slot"
+                        data-for="island"
+                        role="status"
+                        title="responsável: Paula"
+                        data-feature="island-visual"
+                    >
+                        👩‍💻🚧 Paisagem e água em construção
+                    </div>
+                    <div
+                        class="scene-slot"
+                        data-for="island"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="island-tide-progress"
+                    >
+                        🚧 EM CONSTRUÇÃO - Lógica da maré e cálculos de
+                        progresso.
+                    </div>
+                </section>
 
-                <!-- Botão de cadastro -->
-                <button class="add-task-button" type="submit">
-                    <span aria-hidden="true">+</span>
-                    Adicionar Tarefa
-                </button>
-
-            </form>
-
-            <p id="form-message" role="status">
-               👨‍💻🚧 Área de mensagens do cadastro: validações e confirmações em desenvolvimento.
-            </p>
-
-            <!-- Elementos dos Temas em construção 👩‍💻🚧 -->
-            <div class="scene-slot" data-for="celestial">
-                👩‍💻🚧 Parte Solar em construção
-            </div>
-
-            <div class="scene-slot" data-for="orbit">
-                👩‍💻🚧 Planetas e órbitas em construção
-            </div>
-
-            <div class="scene-slot" data-for="island">
-                👩‍💻🚧 Paisagem e água em construção
-            </div>
-
-        </section>
-
+                <!-- Celestial Balance - Guia das Energias -->
                 <section
                     class="energy-guide"
                     aria-labelledby="energy-guide-heading"
@@ -206,91 +297,122 @@
                         <p>🔵 Baixa = azul (quando puder)</p>
                     </div>
                 </section>
-        </div>
-
-        <div class="layout-center theme-scene"></div>
-
-        <div class="layout-right">
-        <!-- Minhas tarefas -->
-        <section aria-labelledby="task-list-heading">
-            <!-- CABEÇALHO - Título e botão de pesquisa -->
-            <header class="task-list-header">
-                <h2 id="task-list-heading">Minhas tarefas</h2>
-
-                <button
-                    type="button"
-                    id="task-search-toggle"
-                    class="task-search-toggle"
-                    aria-label="Pesquisar tarefas"
-                    aria-expanded="false"
-                    aria-controls="task-search"
-                >
-                    🔍
-                </button>
-            </header>
-            <!-- CAMPO DE PESQUISA DE TAREFAS -->
-            <div id="task-search" class="task-search-container" hidden>
-                <label for="task-search-input">
-                    Pesquisar tarefas
-                </label>
-
-                <input
-                    type="search"
-                    id="task-search-input"
-                    name="task-search"
-                    placeholder="Pesquisar por título..."
-                    autocomplete="off"
-                />
             </div>
-            <!-- FILTROS DE TAREFAS -->
-            <nav class="task-filters" aria-label="Filtrar tarefas">
-                <button
-                    type="button"
-                    data-filter="all"
-                    aria-pressed="true"
-                >
-                    Todas
-                </button>
+            <!-- CENTRO - Cenário visual dos temas -->
+            <div class="layout-center theme-scene"></div>
+            <!-- LADO DIREITO - Cards de tarefas, filtros e indicadores de progresso -->
+            <div class="layout-right">
+                <!-- LISTAGEM DE TAREFAS - Cards, pesquisa e filtros -->
+                <section aria-labelledby="task-list-heading">
+                    <!-- CABEÇALHO - Título e botão de pesquisa -->
+                    <header class="task-list-header">
+                        <h2 id="task-list-heading">Minhas tarefas</h2>
 
-                <button
-                    type="button"
-                    data-filter="solar"
-                    aria-pressed="false"
-                >
-                    Solares
-                </button>
+                        <button
+                            type="button"
+                            id="task-search-toggle"
+                            class="task-search-toggle"
+                            aria-label="Pesquisar tarefas"
+                            aria-expanded="false"
+                            aria-controls="task-search"
+                        >
+                            🔍
+                        </button>
+                    </header>
+                    <div
+                        class="construction-slot"
+                        role="status"
+                        title="Responsável: Paula"
+                        data-feature="task-list"
+                    >
+                        🚧 EM CONSTRUÇÃO - Integração e validação da listagem e
+                        conclusão de tarefas.
+                    </div>
+                    <!-- CAMPO DE PESQUISA DE TAREFAS -->
+                    <div id="task-search" class="task-search-container" hidden>
+                        <label for="task-search-input">
+                            Pesquisar tarefas
+                        </label>
 
-                <button
-                    type="button"
-                    data-filter="lunar"
-                    aria-pressed="false"
-                >
-                    Lunares
-                </button>
+                        <input
+                            type="search"
+                            id="task-search-input"
+                            name="task-search"
+                            placeholder="Pesquisar por título..."
+                            autocomplete="off"
+                        />
+                    </div>
+                    <div
+                        class="construction-slot"
+                        role="status"
+                        title="Responsável: Paula"
+                        data-feature="task-search-filters"
+                    >
+                        🚧 EM CONSTRUÇÃO - Pesquisa e filtros de tarefas.
+                    </div>
+                    <!-- FILTROS DE TAREFAS -->
+                    <nav class="task-filters" aria-label="Filtrar tarefas">
+                        <button
+                            type="button"
+                            data-filter="all"
+                            aria-pressed="true"
+                        >
+                            Todas
+                        </button>
 
-                <button
-                    type="button"
-                    data-filter="done"
-                    aria-pressed="false"
-                >
-                    Concluídas
-                </button>
-            </nav>
-            <ul id="tasks-list"></ul>
-            <p id="tasks-empty" hidden>Nenhuma tarefa cadastrada.</p>
-        </section>
+                        <button
+                            type="button"
+                            data-filter="solar"
+                            aria-pressed="false"
+                        >
+                            Solares
+                        </button>
 
-        <!-- Task statistics and progress -->
-        <section aria-labelledby="progress-heading">
-            <h2 id="progress-heading">Meu progresso</h2>
+                        <button
+                            type="button"
+                            data-filter="lunar"
+                            aria-pressed="false"
+                        >
+                            Lunares
+                        </button>
 
-            <p id="tasks-summary" aria-live="polite"></p>
-        </section>
+                        <button
+                            type="button"
+                            data-filter="done"
+                            aria-pressed="false"
+                        >
+                            Concluídas
+                        </button>
+                    </nav>
+                    <ul id="tasks-list"></ul>
+                    <div
+                        class="construction-slot"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="task-edit-delete"
+                    >
+                        🚧 EM CONSTRUÇÃO - Edição e exclusão de tarefas.
+                    </div>
+                    <p id="tasks-empty" hidden>Nenhuma tarefa cadastrada.</p>
+                </section>
+                <!-- Meu Progresso -->
+                <section aria-labelledby="progress-heading">
+                    <h2 id="progress-heading">Meu progresso</h2>
+                    <div
+                        class="construction-slot"
+                        role="status"
+                        title="Responsável: Andrehlb"
+                        data-feature="task-statistics"
+                    >
+                        🚧 EM CONSTRUÇÃO - Estatísticas e indicadores de
+                        progresso.
+                    </div>
+                    <p id="tasks-summary" aria-live="polite"></p>
+                </section>
+            </div>
+        </main>
 
-        </div>
-    </main>
-
-    <footer class="site-signature" aria-label="Créditos do projeto">
+        <footer class="site-signature" aria-label="Créditos do projeto">
             <div class="site-signature__content">
                 <div class="site-signature__line">
                     <span class="site-signature__project-label"> Projeto </span>
@@ -321,12 +443,10 @@
             <div class="site-signature__sparkles" aria-hidden="true"></div>
         </footer>
 
-    <!-- JavaScript Modules -->
-    <script src="./js/task-model.js"></script>
-    <script src="./js/storage.js"></script>
-    <script src="./js/eventos.js"></script>
-    <script src="./js/script.js"></script>
-
-</body>
-
+        <!-- JavaScript Modules -->
+        <script src="./js/task-model.js"></script>
+        <script src="./js/storage.js"></script>
+        <script src="./js/eventos.js"></script>
+        <script src="./js/script.js"></script>
+    </body>
 </html>
