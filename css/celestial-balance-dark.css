@@ -1,176 +1,204 @@
-/* =========================================
-   02 - CELESTIAL BALANCE: ESCURO
-========================================= */
-body.preview-celestial.preview-dark {
-    color-scheme: dark;
+/* CELESTIAL BALANCE DARK - todas as variacoes exclusivas do tema */
 
-    --page-bg: #070e27;
-    --panel: #111d3bef;
-    --field: #1b284a;
-    --text: #fff6ec;
-    --muted: #b5bad3;
-    --border: #65577d;
-    --accent: #ffd075;
-    --button-text: #513317;
-
-    --button-bg: linear-gradient(180deg, #ffe79e, #ffbd55);
-
-    --scene: url("../assets/themes/balance-celestial-dark/Vale Encantado sob o Céu Estrelado-landscape-Celestial-Balance-Dark.png");
-
-    background-image: var(--scene);
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-/* Celestial Balance Dark - Superfície dos cards */
-body.preview-celestial.preview-dark .task-card,
-body.preview-celestial.preview-dark .layout-right > section {
-    background: linear-gradient(
-        155deg,
-        rgba(21, 29, 62, 0.96),
-        rgba(9, 17, 43, 0.97)
-    );
-
-    border: 1px solid rgba(220, 189, 137, 0.4);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0),
-        0 18px 42px rgba(0, 3, 22, 0.4);
-}
-
-/* Celestial Balance Dark - Composição central */
-/* Celestial Balance Dark - Sobreposições */
-/* CELESTIAL BALANCE DARK - CONTROLE DAS SOBREPOSIÇÕES */
 body.preview-celestial.preview-dark .layout-center {
     display: block;
-    min-height: 790px;
+    min-height: var(--celestial-height);
     background-color: transparent;
-
-    /* SOL E LUA */
     --sol-lua-x: 10px;
     --sol-lua-y: -120px;
     --sol-lua-size: 72% auto;
-
-    /* ELEMENTOS ASTRAIS */
     --astral-x: 30px;
     --astral-y: -110px;
     --astral-size: 100% auto;
-
     background-image:
         url("../assets/themes/balance-celestial-dark/celestial-sun-moon-dark.png"),
         url("../assets/themes/balance-celestial-dark/Diagrama Orbital Celestial Dourado sem Sol Inferior.png");
-
     background-repeat: no-repeat, no-repeat;
-
     background-size: var(--sol-lua-size), var(--astral-size);
-
     background-position:
         calc(50% + var(--sol-lua-x)) calc(50% + var(--sol-lua-y)),
         calc(50% + var(--astral-x)) calc(50% + var(--astral-y));
 }
 
-/* Referência comum: 1448 x 1086 */
-body.preview-celestial.preview-dark .celestial-scene__composition {
-    width: 100%;
-    aspect-ratio: 1448 / 1086;
-
-    background-image:
-        url("../assets/themes/balance-celestial-dark/celestial-sun-moon-dark.png"),
-        url("../assets/themes/balance-celestial-dark/Diagrama Orbital Celestial Dourado sem Sol Inferior.png");
-
-    background-size:
-        72% auto,
-        100% 100%;
-
-    /* 1a linha: Sol e Lua | 2a linha: Elementos astrais */
-    background-position:
-        calc(50% + 20px) calc(50% + 50px),
-        calc(50% + 50px) calc(50% + -80px);
-
-    background-repeat: no-repeat;
-}
-
-/* Responsividade do cenário -
-Celestial Balance Dark - telas menores */
-@media (max-width: 1199px) {
-    body.preview-celestial.preview-dark .layout-center {
-        min-height: clamp(340px, 75vw, 650px);
-    }
-}
-
-/* Celestial Balance Dark - enquadramento na página web */
 @media (min-width: 1200px) and (orientation: landscape) {
     body.preview-celestial.preview-dark .app-layout {
         width: 100%;
         max-width: none;
         margin: 0;
         padding: 0;
-
         grid-template-columns:
             minmax(0, 22fr)
             minmax(0, 52fr)
             minmax(0, 26fr);
-
         gap: 3px;
-        --celestial-height: max(790px, calc(100svh - 90px));
-    }
-
-    body.preview-celestial.preview-dark .layout-left,
-    body.preview-celestial.preview-dark .layout-center,
-    body.preview-celestial.preview-dark .layout-right {
-        min-height: var(--celestial-height);
-    }
-
-    body.preview-celestial.preview-dark .layout-left,
-    body.preview-celestial.preview-dark .layout-right {
-        max-width: none;
-        margin: 0;
-        padding: 5px;
-    }
-
-    body.preview-celestial.preview-dark .task-card,
-    body.preview-celestial.preview-dark .layout-right > section {
-        width: 100%;
-        max-width: none;
-        margin: 0;
+        --celestial-height: max(0px, calc(100svh - 90px));
     }
 }
+body.preview-celestial.preview-dark .layout-left {
+    min-height: var(--celestial-height);
+    max-width: none;
+    margin: 0;
+    padding: 5px;
+}
 
-/* Celestial Balance Dark - Card Nova Tarefa */
+body.preview-celestial.preview-dark .layout-right {
+    min-height: var(--celestial-height);
+    max-width: none;
+    margin: 0;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+    body.preview-celestial.preview-dark .layout-left {
+        height: calc(100svh - 90px);
+        min-height: 0;
+        display: grid;
+        grid-template-rows: minmax(0, 58fr) minmax(0, 42fr);
+        gap: 26px;
+    }
+}
+body.preview-celestial.preview-dark
+    > .construction-slot[data-feature="appearance-modes"] {
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    width: 33.3333%;
+    height: 22px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4px 8px;
+    left: 0;
+    font-size: 10px;
+    line-height: 14px;
+    white-space: nowrap;
+    color: #b9c9f5;
+    background: rgba(7, 14, 39, 0.9);
+    border: 1px dashed rgba(130, 155, 235, 0.35);
+    border-radius: 0;
+}
+
+body.preview-celestial.preview-dark
+    > .construction-slot[data-feature="theme-selector"] {
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    width: 33.3333%;
+    height: 22px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4px 8px;
+    left: 33.3333%;
+    font-size: 10px;
+    line-height: 14px;
+    white-space: nowrap;
+    color: #b9c9f5;
+    background: rgba(7, 14, 39, 0.9);
+    border: 1px dashed rgba(130, 155, 235, 0.35);
+    border-radius: 0;
+}
+
+body.preview-celestial.preview-dark
+    > .construction-slot[data-feature="language-selector"] {
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    width: 33.3333%;
+    height: 22px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4px 8px;
+    left: 66.6666%;
+    font-size: 10px;
+    line-height: 14px;
+    white-space: nowrap;
+    color: #b9c9f5;
+    background: rgba(7, 14, 39, 0.9);
+    border: 1px dashed rgba(130, 155, 235, 0.35);
+    border-radius: 0;
+}
+
+body.preview-celestial.preview-dark .celestial-scene__composition {
+    aspect-ratio: 1448 / 1086;
+    width: 100%;
+    background-image:
+        url("../assets/themes/balance-celestial-dark/celestial-sun-moon-dark.png"),
+        url("../assets/themes/balance-celestial-dark/Diagrama Orbital Celestial Dourado sem Sol Inferior.png");
+    background-size:
+        72% auto,
+        100% 100%;
+    background-position:
+        calc(50% + 20px) calc(50% + 50px),
+        calc(50% + 50px) calc(50% + -80px);
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+    body.preview-celestial.preview-dark {
+        height: 100svh;
+        min-height: 0;
+        overflow: hidden;
+    }
+}
 body.preview-celestial.preview-dark .task-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
     padding: 24px;
+    background: linear-gradient(
+        155deg,
+        rgba(21, 29, 62, 0.96),
+        rgba(9, 17, 43, 0.97)
+    );
+    border: 1px solid rgba(220, 189, 137, 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0),
+        0 18px 42px rgba(0, 3, 22, 0.4);
 }
 
-/* Celestial Balance Dark - Título do Card */
+body.preview-celestial.preview-dark .layout-right > section {
+    max-width: none;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0),
+        0 18px 42px rgba(0, 3, 22, 0.4);
+    border: 1px solid rgba(220, 189, 137, 0.4);
+    border-radius: 18px;
+    background: linear-gradient(
+        155deg,
+        rgba(21, 29, 62, 0.96),
+        rgba(9, 17, 43, 0.97)
+    );
+}
+
 body.preview-celestial.preview-dark .task-card-header h2 {
-    font-family: Georgia, serif;
     font-size: 22px;
+    line-height: 1.4;
+    font-family: Georgia, serif;
     font-weight: 600;
     color: #ffe0a0;
-    line-height: 1.4;
 }
 
-/* Celestial Balance Dark - Campos do formulário */
-body.preview-celestial.preview-dark .form-field input,
-body.preview-celestial.preview-dark .form-field-textarea {
-    background: rgba(17, 28, 59, 0.85);
-    border: 1px solid rgba(212, 186, 142, 0.45);
-    border-radius: 12px;
-    color: #fff6ec;
-}
-
-/* Celestial Balance Dark - Rótulos do formulário */
-body.preview-celestial.preview-dark .form-field label,
-body.preview-celestial.preview-dark .energy-toggle legend {
-    color: #f3d9ad;
+body.preview-celestial.preview-dark .form-field label {
     font-size: 13px;
+    color: #f3d9ad;
     font-weight: 600;
     letter-spacing: 0.3px;
 }
 
-/* Celestial Balance Dark - Guia das Energias */
+body.preview-celestial.preview-dark .energy-toggle legend {
+    font-size: 13px;
+    color: #f3d9ad;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
 body.preview-celestial.preview-dark .energy-guide {
     margin-top: 8px;
     padding: 20px;
@@ -186,13 +214,9 @@ body.preview-celestial.preview-dark .energy-guide {
 
 body.preview-celestial.preview-dark .energy-guide h2 {
     margin: 0 0 18px;
+    font-size: 18px;
     color: #f3d9ad;
     font-family: Georgia, serif;
-    font-size: 18px;
-}
-
-body.preview-celestial.preview-dark .energy-guide__item {
-    margin-bottom: 16px;
 }
 
 body.preview-celestial.preview-dark .energy-guide__item h3 {
@@ -217,159 +241,45 @@ body.preview-celestial.preview-dark .energy-guide__icon {
     transform: scale(1.3);
 }
 
-/* =========================================
-   CELESTIAL BALANCE DARK - PAINEL DIREITO
-   Cabeçalho, pesquisa e filtros
-========================================= */
-
-/* Cabeçalho: título e botão de pesquisa */
-body.preview-celestial.preview-dark .task-list-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
 body.preview-celestial.preview-dark .task-list-header h2 {
     margin: 0;
+    font-size: 20px;
     color: #ffe0a0;
     font-family: Georgia, serif;
-    font-size: 20px;
     font-weight: 600;
 }
 
-/* Botão de pesquisa */
 body.preview-celestial.preview-dark .task-search-toggle {
-    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
     padding: 0;
-    border: 1px solid rgba(220, 189, 137, 0.4);
-    border-radius: 10px;
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-}
-
-body.preview-celestial.preview-dark .task-search-toggle:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-}
-
-/* Campo de pesquisa */
-body.preview-celestial.preview-dark .task-search-container {
-    margin-bottom: 14px;
-}
-
-body.preview-celestial.preview-dark .task-search-container[hidden] {
-    display: none;
-}
-
-body.preview-celestial.preview-dark .task-search-container label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 13px;
-    color: var(--muted);
-}
-
-body.preview-celestial.preview-dark #task-search-input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--field);
-    color: var(--text);
-    font: inherit;
-}
-
-/* Filtros das tarefas */
-body.preview-celestial.preview-dark .task-filters {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-    margin-bottom: 16px;
-}
-
-body.preview-celestial.preview-dark .task-filters button {
-    min-width: 0;
-    padding: 10px 4px;
-    border: 1px solid transparent;
-    border-radius: 9px;
-    background: #222b4d;
-    color: #c7c7e4;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-body.preview-celestial.preview-dark .task-filters button[aria-pressed="true"] {
-    background: linear-gradient(120deg, #5c65e5, #8272ed);
-    color: #ffffff;
-    box-shadow: 0 0 14px rgba(130, 114, 237, 0.25);
-}
-
-body.preview-celestial.preview-dark .task-filters button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
-
-/* =========================================
-   CELESTIAL BALANCE DARK - COLUNA DIREITA
-========================================= */
-
-body.preview-celestial.preview-dark .layout-right {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    min-width: 0;
-}
-
-/* Painéis */
-body.preview-celestial.preview-dark .layout-right > section {
-    width: 100%;
-    min-width: 0;
-    padding: 20px;
-    border: 1px solid rgba(220, 189, 137, 0.4);
-    border-radius: 18px;
-    background: linear-gradient(
-        155deg,
-        rgba(21, 29, 62, 0.96),
-        rgba(9, 17, 43, 0.97)
-    );
-}
-
-body.preview-celestial.preview-dark .layout-right > section h2 {
-    margin: 0;
-    font-family: Georgia, serif;
-    font-size: 19px;
-    color: #ffe0a0;
-}
-
-/* Cabeçalho */
-body.preview-celestial.preview-dark .task-list-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-body.preview-celestial.preview-dark .task-search-toggle {
-    display: grid;
-    place-items: center;
     width: 38px;
     height: 38px;
     flex-shrink: 0;
+    cursor: pointer;
+    place-items: center;
     border: 1px solid rgba(220, 189, 137, 0.4);
     border-radius: 10px;
     background: transparent;
     color: #c7c9eb;
-    cursor: pointer;
 }
 
-/* Pesquisa */
+body.preview-celestial.preview-dark .layout-right > section h2 {
+    margin: 0;
+    font-size: 19px;
+    font-family: Georgia, serif;
+    color: #ffe0a0;
+}
+
+body.preview-celestial.preview-dark .task-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
 body.preview-celestial.preview-dark .task-search-container {
     margin-bottom: 14px;
 }
@@ -395,7 +305,6 @@ body.preview-celestial.preview-dark #task-search-input {
     font: inherit;
 }
 
-/* Filtros */
 body.preview-celestial.preview-dark .task-filters {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -406,26 +315,19 @@ body.preview-celestial.preview-dark .task-filters {
 body.preview-celestial.preview-dark .task-filters button {
     min-width: 0;
     padding: 10px 3px;
+    font-size: 11px;
+    cursor: pointer;
     border: 1px solid transparent;
     border-radius: 8px;
     background: #222b4d;
     color: #c7c9eb;
-    font-size: 11px;
-    cursor: pointer;
-}
-
-body.preview-celestial.preview-dark .task-filters button[aria-pressed="true"] {
-    background: linear-gradient(120deg, #5c65e5, #8272ed);
-    color: #ffffff;
-    box-shadow: 0 0 14px rgba(130, 114, 237, 0.4);
 }
 
 body.preview-celestial.preview-dark .task-filters button:disabled {
-    opacity: 0.4;
     cursor: not-allowed;
+    opacity: 0.4;
 }
 
-/* Lista e cards */
 body.preview-celestial.preview-dark #tasks-list {
     margin: 0;
     padding: 0;
@@ -449,14 +351,6 @@ body.preview-celestial.preview-dark .celestial-task__priority {
     background: #ffbd5b;
 }
 
-body.preview-celestial.preview-dark .celestial-task__priority--high {
-    background: #ff6060;
-}
-
-body.preview-celestial.preview-dark .celestial-task__priority--low {
-    background: #6e94ff;
-}
-
 body.preview-celestial.preview-dark .celestial-task__symbol {
     width: 30px;
     flex-shrink: 0;
@@ -472,25 +366,21 @@ body.preview-celestial.preview-dark .celestial-task__content {
 body.preview-celestial.preview-dark .celestial-task__title {
     display: block;
     overflow-wrap: anywhere;
-    color: #fff6ec;
     font-size: 13px;
+    color: #fff6ec;
     font-weight: 600;
 }
 
 body.preview-celestial.preview-dark .celestial-task__date {
     display: block;
-    color: #aeb7d9;
     font-size: 11px;
+    color: #aeb7d9;
 }
 
 body.preview-celestial.preview-dark .celestial-task__status {
     display: block;
-    color: #ffc56e;
     font-size: 11px;
-}
-
-body.preview-celestial.preview-dark .celestial-task__status--late {
-    color: #ff7777;
+    color: #ffc56e;
 }
 
 body.preview-celestial.preview-dark .celestial-task__actions {
@@ -501,30 +391,18 @@ body.preview-celestial.preview-dark .celestial-task__actions {
 
 body.preview-celestial.preview-dark .celestial-task__actions button {
     display: grid;
-    place-items: center;
     width: 29px;
     height: 32px;
     padding: 0;
+    font-size: 19px;
+    cursor: pointer;
+    place-items: center;
     border: 0;
     border-radius: 7px;
     background: transparent;
     color: #c0c5ec;
-    font-size: 19px;
-    cursor: pointer;
 }
 
-body.preview-celestial.preview-dark .celestial-task__actions button:hover {
-    background: rgba(130, 114, 237, 0.16);
-}
-
-body.preview-celestial.preview-dark
-    .celestial-task--done
-    .celestial-task__title {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
-/* Resumo do ciclo */
 body.preview-celestial.preview-dark .cycle-summary {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr)) 90px;
@@ -547,16 +425,16 @@ body.preview-celestial.preview-dark .cycle-summary__metric strong {
 }
 
 body.preview-celestial.preview-dark .cycle-summary__metric span {
-    color: #b8bfdd;
     font-size: 10px;
+    color: #b8bfdd;
 }
 
 body.preview-celestial.preview-dark .cycle-summary__ring {
-    --progress: 0%;
     width: 86px;
     height: 86px;
     display: grid;
     place-items: center;
+    --progress: 0%;
     border-radius: 50%;
     background:
         radial-gradient(closest-side, #111a36 78%, transparent 80%),
@@ -569,13 +447,6 @@ body.preview-celestial.preview-dark .cycle-summary__ring {
 
 body.preview-celestial.preview-dark .cycle-summary__ring strong {
     font-size: 17px;
-}
-
-/* Acessibilidade e responsividade */
-body.preview-celestial.preview-dark .layout-right button:focus-visible,
-body.preview-celestial.preview-dark #task-search-input:focus-visible {
-    outline: 2px solid #ffd075;
-    outline-offset: 2px;
 }
 
 @media (max-width: 420px) {
@@ -600,27 +471,373 @@ body.preview-celestial.preview-dark #task-search-input:focus-visible {
         justify-self: center;
     }
 }
-
-/* Celestial Balance Dark - Botão de conclusão */
 body.preview-celestial.preview-dark .celestial-task__complete {
     display: grid;
-    place-items: center;
     flex-shrink: 0;
-
     width: 32px;
     height: 32px;
-
     padding: 0;
-    border: none;
-    border-radius: 50%;
-
-    background: transparent;
-    color: #bfc5ed;
-
     font-size: 25px;
     line-height: 1;
-
     cursor: pointer;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #bfc5ed;
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+    body.preview-celestial.preview-dark .layout-left .task-card {
+        height: 100%;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+        box-sizing: border-box;
+        border-radius: 22px;
+        background: linear-gradient(
+            180deg,
+            rgba(12, 21, 54, 0.95),
+            rgba(8, 16, 42, 0.96)
+        );
+        border: 1px solid rgba(214, 184, 120, 0.38);
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.35),
+            inset 0 0 0 1px rgba(255, 224, 160, 0.05);
+    }
+
+    body.preview-celestial.preview-dark .layout-left .orbit-description {
+        display: none;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .heading-orbit {
+        display: none;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .heading-island {
+        display: none;
+    }
+
+    body.preview-celestial.preview-dark
+        .layout-left
+        .scene-slot:not([data-for="celestial"]) {
+        display: none;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .task-card-header {
+        margin-bottom: 2px;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .task-card-header h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.1;
+        font-weight: 700;
+        color: #f4ddb0;
+    }
+
+    body.preview-celestial.preview-dark #task-form {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .form-field {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .form-field label {
+        font-size: 11px;
+        line-height: 1.1;
+        margin: 0;
+        padding: 0;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .energy-toggle legend {
+        font-size: 11px;
+        line-height: 1.1;
+        margin: 0;
+        padding: 0;
+    }
+
+    body.preview-celestial.preview-dark #task-title {
+        width: 100%;
+        height: 26px;
+        padding: 2px 8px;
+        font-size: 11.5px;
+        box-sizing: border-box;
+    }
+
+    body.preview-celestial.preview-dark #task-priority {
+        width: 75%;
+        height: 26px;
+        padding: 2px 8px;
+        font-size: 11.5px;
+        box-sizing: border-box;
+        min-height: 0;
+    }
+
+    body.preview-celestial.preview-dark #task-due-date {
+        width: 100%;
+        height: 26px;
+        padding: 2px 8px;
+        font-size: 11.5px;
+        box-sizing: border-box;
+        min-height: 0;
+    }
+
+    body.preview-celestial.preview-dark .layout-left #task-description {
+        height: 30px;
+        min-height: 30px;
+        padding: 3px 8px;
+        font-size: 11px;
+        line-height: 1.15;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .energy-toggle {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .energy-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .energy-option {
+        position: relative;
+        cursor: pointer;
+    }
+
+    body.preview-celestial.preview-dark
+        .layout-left
+        .energy-option
+        input[type="radio"] {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    body.preview-celestial.preview-dark .layout-left .energy-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 42px;
+        font-size: 13px;
+        border-radius: 14px;
+        font-weight: 600;
+        background: rgba(22, 31, 70, 0.95);
+        border: 1px solid rgba(116, 128, 188, 0.42);
+        color: #d9d9f5;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide {
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 10px 14px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        top: -22px;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide h2 {
+        margin: 0 0 4px;
+        font-size: 16px;
+        line-height: 1.15;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__item {
+        display: grid;
+        grid-template-columns: 84px minmax(0, 1fr);
+        align-items: center;
+        column-gap: 8px;
+        min-height: 2px;
+        margin-bottom: 4px;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__icon {
+        width: 62px;
+        height: 62px;
+        margin: -15px 0 -15px -6px;
+        object-fit: contain;
+        flex-shrink: 0;
+        transform: scale(1.3);
+        pointer-events: none;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__item h3 {
+        margin: 0 0 2px;
+        font-size: 12.5px;
+        line-height: 1.15;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__item p {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.2;
+        color: #b5bad3;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__priorities {
+        margin-top: 4px;
+        padding-top: 6px;
+        border-top: 1px solid rgba(170, 180, 220, 0.15);
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__priorities h3 {
+        margin: 0 0 6px;
+        font-size: 12px;
+        color: #f3d9ad;
+    }
+
+    body.preview-celestial.preview-dark .energy-guide__priorities p {
+        margin: 2px 0;
+        font-size: 11px;
+        line-height: 1.25;
+    }
+}
+body.preview-celestial.preview-dark .layout-left .construction-slot {
+    margin: 0;
+    padding: 1px 5px;
+    font-size: 8.5px;
+    line-height: 1.15;
+    white-space: normal;
+    flex-shrink: 0;
+}
+
+body.preview-celestial.preview-dark
+    .layout-left
+    .scene-slot[data-for="celestial"] {
+    margin: 0;
+    padding: 1px 5px;
+    font-size: 8.5px;
+    line-height: 1.15;
+    white-space: normal;
+    flex-shrink: 0;
+}
+
+body.preview-celestial.preview-dark .layout-left #form-message {
+    margin: 0;
+    padding: 1px 5px;
+    font-size: 8.5px;
+    line-height: 1.15;
+    white-space: normal;
+    flex-shrink: 0;
+}
+
+body.preview-celestial.preview-dark .layout-left .add-task-button {
+    width: 100%;
+    height: 46px;
+    margin-top: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffe08b 0%, #f4bb4d 100%);
+    color: #4b2f10;
+    font-weight: 700;
+    box-shadow:
+        0 0 16px rgba(255, 192, 78, 0.35),
+        inset 0 1px 0 rgba(255, 245, 200, 0.35);
+}
+
+body.preview-celestial.preview-dark {
+    color-scheme: dark;
+    --page-bg: #070e27;
+    --panel: #111d3bef;
+    --field: #1b284a;
+    --text: #fff6ec;
+    --muted: #b5bad3;
+    --border: #65577d;
+    --accent: #ffd075;
+    --button-text: #513317;
+    --button-bg: linear-gradient(180deg, #ffe79e, #ffbd55);
+    --scene: url("../assets/themes/balance-celestial-dark/Vale Encantado sob o Céu Estrelado-landscape-Celestial-Balance-Dark.png");
+    background-image: var(--scene);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.preview-celestial.preview-dark .form-field input {
+    background: rgba(17, 28, 59, 0.85);
+    border: 1px solid rgba(212, 186, 142, 0.45);
+    border-radius: 12px;
+    color: #fff6ec;
+}
+
+body.preview-celestial.preview-dark .form-field-textarea {
+    background: rgba(17, 28, 59, 0.85);
+    border: 1px solid rgba(212, 186, 142, 0.45);
+    border-radius: 12px;
+    color: #fff6ec;
+}
+
+body.preview-celestial.preview-dark .task-search-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+body.preview-celestial.preview-dark .task-filters button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+body.preview-celestial.preview-dark .task-filters button[aria-pressed="true"] {
+    background: linear-gradient(120deg, #5c65e5, #8272ed);
+    color: #ffffff;
+    box-shadow: 0 0 14px rgba(130, 114, 237, 0.4);
+}
+
+body.preview-celestial.preview-dark .celestial-task__priority--high {
+    background: #ff6060;
+}
+
+body.preview-celestial.preview-dark .celestial-task__priority--low {
+    background: #6e94ff;
+}
+
+body.preview-celestial.preview-dark .celestial-task__status--late {
+    color: #ff7777;
+}
+
+body.preview-celestial.preview-dark .celestial-task__actions button:hover {
+    background: rgba(130, 114, 237, 0.16);
+}
+
+body.preview-celestial.preview-dark
+    .celestial-task--done
+    .celestial-task__title {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+body.preview-celestial.preview-dark .layout-right button:focus-visible {
+    outline: 2px solid #ffd075;
+    outline-offset: 2px;
+}
+
+body.preview-celestial.preview-dark #task-search-input:focus-visible {
+    outline: 2px solid #ffd075;
+    outline-offset: 2px;
 }
 
 body.preview-celestial.preview-dark .celestial-task__complete:hover {
@@ -633,185 +850,34 @@ body.preview-celestial.preview-dark .celestial-task__complete:focus-visible {
     outline-offset: 2px;
 }
 
-/* Celestial Balance - Cards compactos no desktop */
-@media (min-width: 1200px) and (max-height: 950px) {
-    body.preview-celestial.preview-dark .task-card {
-        padding: 12px 16px;
+@media (min-width: 1200px) and (orientation: landscape) {
+    body.preview-celestial.preview-dark
+        .layout-left
+        .energy-option.solar
+        input:checked
+        + .energy-label {
+        background: linear-gradient(
+            90deg,
+            rgba(110, 78, 34, 0.78),
+            rgba(74, 53, 28, 0.78)
+        );
+        border: 1px solid #ffca6b;
+        color: #ffe8b3;
+        box-shadow: 0 0 10px rgba(255, 190, 85, 0.35);
     }
 
-    body.preview-celestial.preview-dark .task-card-header {
-        margin-bottom: 10px;
-    }
-
-    body.preview-celestial.preview-dark .task-card-header h2 {
-        font-size: 17px;
-        line-height: 1.2;
-    }
-
-    body.preview-celestial.preview-dark #task-form {
-        gap: 8px;
-    }
-
-    body.preview-celestial.preview-dark .form-field {
-        gap: 4px;
-    }
-
-    body.preview-celestial.preview-dark .form-field input,
-    body.preview-celestial.preview-dark .form-field textarea,
-    body.preview-celestial.preview-dark .form-field select {
-        padding: 7px 10px;
-    }
-
-    body.preview-celestial.preview-dark .energy-label {
-        min-height: 34px;
-        padding: 4px;
-    }
-
-    body.preview-celestial.preview-dark .add-task-button {
-        min-height: 36px;
-        padding: 7px;
-    }
-
-    body.preview-celestial.preview-dark #form-message {
-        margin-top: 6px;
-        padding: 4px 0;
-    }
-
-    body.preview-celestial.preview-dark .scene-slot {
-        margin-top: 6px;
-        padding: 6px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide {
-        margin-top: 6px;
-        padding: 10px 14px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide h2 {
-        margin-bottom: 8px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__item {
-        grid-template-columns: 50px minmax(0, 1fr);
-        margin-bottom: 5px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__icon {
-        width: 48px;
-        height: 48px;
-        transform: none;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__item h3 {
-        margin-bottom: 2px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__item p,
-    body.preview-celestial.preview-dark .energy-guide__priorities p {
-        margin: 3px 0;
-    }
-}
-
-/* Ajuste fino - Coluna esquerda em desktop */
-@media (min-width: 1200px) and (max-height: 950px) {
-    body.preview-celestial.preview-dark .task-card {
-        padding: 10px 14px;
-    }
-
-    body.preview-celestial.preview-dark .task-card-header {
-        margin-bottom: 6px;
-    }
-
-    body.preview-celestial.preview-dark #task-form {
-        gap: 6px;
-    }
-
-    body.preview-celestial.preview-dark .form-field {
-        gap: 3px;
-    }
-
-    body.preview-celestial.preview-dark .form-field input,
-    body.preview-celestial.preview-dark .form-field select {
-        padding: 6px 9px;
-        min-height: 34px;
-    }
-
-    body.preview-celestial.preview-dark .form-field textarea {
-        height: 48px;
-        padding: 6px 9px;
-    }
-
-    body.preview-celestial.preview-dark .construction-slot,
-    body.preview-celestial.preview-dark .scene-slot {
-        padding: 5px 8px;
-    }
-
-    body.preview-celestial.preview-dark .energy-toggle legend {
-        margin-bottom: 4px;
-    }
-
-    body.preview-celestial.preview-dark .energy-label {
-        min-height: 32px;
-    }
-
-    body.preview-celestial.preview-dark .add-task-button {
-        min-height: 34px;
-        margin-top: 0;
-    }
-
-    body.preview-celestial.preview-dark #form-message {
-        margin-top: 4px;
-        padding: 2px 0;
-        line-height: 1.25;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide {
-        padding: 8px 12px;
-        margin-top: 4px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide h2 {
-        font-size: 15px;
-        margin-bottom: 5px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__item {
-        grid-template-columns: 34px minmax(0, 1fr);
-        gap: 6px;
-        margin-bottom: 3px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__icon {
-        width: 34px;
-        height: 34px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__item h3 {
-        font-size: 12px;
-        margin-bottom: 1px;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__item p,
-    body.preview-celestial.preview-dark .energy-guide__priorities p {
-        font-size: 11px;
-        line-height: 1.2;
-        margin: 2px 0;
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__priorities h3 {
-        font-size: 12px;
-        margin: 4px 0;
-    }
-}
-
-@media (min-width: 1200px) and (max-height: 950px) {
-    body.preview-celestial.preview-dark .energy-guide__item {
-        grid-template-columns: 60px minmax(0, 1fr);
-    }
-
-    body.preview-celestial.preview-dark .energy-guide__icon {
-        width: 60px;
-        height: 60px;
-        transform: none;
+    body.preview-celestial.preview-dark
+        .layout-left
+        .energy-option.lunar
+        input:checked
+        + .energy-label {
+        background: linear-gradient(
+            90deg,
+            rgba(45, 58, 125, 0.82),
+            rgba(30, 40, 95, 0.82)
+        );
+        border: 1px solid #8294ff;
+        color: #ffffff;
+        box-shadow: 0 0 10px rgba(130, 148, 255, 0.35);
     }
 }
