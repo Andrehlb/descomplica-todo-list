@@ -80,20 +80,8 @@
     );
   }
 
-  function countByStatus(tasks) {
-    const validTasks = Array.isArray(tasks) ? tasks.filter(isValidTask) : [];
-    const completed = validTasks.filter((task) => task.completed === true).length;
-
-    return {
-      total: validTasks.length,
-      pending: validTasks.length - completed,
-      completed,
-    };
-  }
-
   window.TaskFilters = {
     normalizeSearchText,
     filterTasks,
-    countByStatus,
   };
 })();
