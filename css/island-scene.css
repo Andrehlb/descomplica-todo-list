@@ -1,0 +1,147 @@
+.island-scene {
+  --island-scene-sky-top-color: #8fd3ff;
+  --island-scene-sky-bottom-color: #e6f7ff;
+  --island-scene-distant-island-color: #5f9fb8;
+  --island-scene-deep-water-color: #0b6fa8;
+  --island-scene-water-color: #1fa3d6;
+  --island-scene-foam-color: #ffffff;
+  --island-scene-sand-color: #f2d28b;
+  --island-scene-vegetation-color: #4caf50;
+  --island-scene-rock-color: #8a8f98;
+  --island-scene-wood-color: #8b5a2b;
+  --island-scene-hut-wall-color: #a0522d;
+  --island-scene-hut-door-color: #5b3412;
+  --island-scene-water-opacity: 0.82;
+  --island-water-top: 156px;
+
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+
+[data-appearance='dark'] .island-scene {
+  --island-scene-sky-top-color: #06102b;
+  --island-scene-sky-bottom-color: #14315c;
+  --island-scene-distant-island-color: #16304f;
+  --island-scene-deep-water-color: #073a66;
+  --island-scene-water-color: #1676b8;
+  --island-scene-foam-color: #7fe7ff;
+  --island-scene-sand-color: #b89a5c;
+  --island-scene-vegetation-color: #2e7d32;
+  --island-scene-rock-color: #4f5560;
+  --island-scene-wood-color: #5d3a1a;
+  --island-scene-hut-wall-color: #7a3e1d;
+  --island-scene-hut-door-color: #ffd27a;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-appearance='auto'] .island-scene {
+    --island-scene-sky-top-color: #06102b;
+    --island-scene-sky-bottom-color: #14315c;
+    --island-scene-distant-island-color: #16304f;
+    --island-scene-deep-water-color: #073a66;
+    --island-scene-water-color: #1676b8;
+    --island-scene-foam-color: #7fe7ff;
+    --island-scene-sand-color: #b89a5c;
+    --island-scene-vegetation-color: #2e7d32;
+    --island-scene-rock-color: #4f5560;
+    --island-scene-wood-color: #5d3a1a;
+    --island-scene-hut-wall-color: #7a3e1d;
+    --island-scene-hut-door-color: #ffd27a;
+  }
+}
+
+.island-scene__sky-top {
+  stop-color: var(--island-scene-sky-top-color);
+}
+
+.island-scene__sky-bottom {
+  stop-color: var(--island-scene-sky-bottom-color);
+}
+
+.island-scene__distant-islands {
+  fill: var(--island-scene-distant-island-color);
+}
+
+.island-scene__deep-water {
+  fill: var(--island-scene-deep-water-color);
+}
+
+.island-scene__sand {
+  fill: var(--island-scene-sand-color);
+}
+
+.island-scene__vegetation {
+  fill: var(--island-scene-vegetation-color);
+}
+
+.island-scene__rock {
+  fill: var(--island-scene-rock-color);
+}
+
+.island-scene__palm-trunk {
+  fill: none;
+  stroke: var(--island-scene-wood-color);
+  stroke-width: 3;
+}
+
+.island-scene__palm-leaves {
+  fill: none;
+  stroke: var(--island-scene-vegetation-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.island-scene__hut-wall {
+  fill: var(--island-scene-hut-wall-color);
+}
+
+.island-scene__hut-roof {
+  fill: var(--island-scene-wood-color);
+}
+
+.island-scene__hut-door {
+  fill: var(--island-scene-hut-door-color);
+}
+
+.island-scene__water {
+  transform: translateY(var(--island-water-top));
+  transition: transform 0.8s ease-in-out;
+}
+
+.island-scene__moving-wave {
+  animation: island-scene-wave-motion 4s linear infinite;
+}
+
+.island-scene__water-body {
+  fill: var(--island-scene-water-color);
+  opacity: var(--island-scene-water-opacity);
+}
+
+.island-scene__foam {
+  fill: none;
+  stroke: var(--island-scene-foam-color);
+  stroke-width: 2;
+  opacity: 0.9;
+}
+
+@keyframes island-scene-wave-motion {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-60px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .island-scene__water {
+    transition: none;
+  }
+
+  .island-scene__moving-wave {
+    animation: none;
+  }
+}
