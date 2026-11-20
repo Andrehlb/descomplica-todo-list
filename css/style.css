@@ -1,0 +1,163 @@
+@import url("./base.css");
+@import url("./layout.css");
+@import url("./components.css");
+@import url("./intro.css");
+@import url("./celestial-balance-dark.css");
+
+/* =========================================
+   03 - CELESTIAL BALANCE: CLARO
+========================================= */
+
+body.preview-celestial.preview-light {
+    color-scheme: light;
+
+    --page-bg: #fbf3e9;
+    --panel: #fffaf4f2;
+    --field: #ffffff;
+    --text: #26274e;
+    --muted: #747b98;
+    --border: #e3c79f;
+    --accent: #d89b38;
+    --button-text: #583819;
+
+    --button-bg: linear-gradient(180deg, #fff0b5, #ffcb69);
+
+    --scene:
+        radial-gradient(ellipse at 85% 20%, #ded3ff 0%, transparent 46%),
+        linear-gradient(145deg, #e7f0ff, #fff1e0);
+}
+
+/* =========================================
+   04 - ORBIT & GRAVITY: ESCURO
+========================================= */
+
+body.preview-orbit.preview-dark {
+    color-scheme: dark;
+
+    --page-bg: #041029;
+    --panel: #071934f2;
+    --field: #0d1d3d;
+    --text: #f5f7ff;
+    --muted: #aab8d8;
+    --border: #3d5b97;
+    --accent: #668aff;
+    --button-text: #ffffff;
+
+    --button-bg: linear-gradient(135deg, #526dff, #454df3);
+
+    --scene:
+        radial-gradient(ellipse at 80% 10%, #4e488e 0%, transparent 48%),
+        radial-gradient(ellipse at 15% 78%, #16417d 0%, transparent 48%),
+        linear-gradient(145deg, #040b20, #102858);
+}
+
+/* =========================================
+   05 - ORBIT & GRAVITY: CLARO
+========================================= */
+
+body.preview-orbit.preview-light {
+    color-scheme: light;
+
+    --page-bg: #edf3ff;
+    --panel: #ffffffed;
+    --field: #f9fbff;
+    --text: #18264c;
+    --muted: #7b86a7;
+    --border: #d5def4;
+    --accent: #5674ff;
+    --button-text: #ffffff;
+
+    --button-bg: linear-gradient(135deg, #526dff, #454df3);
+
+    --scene:
+        radial-gradient(ellipse at 75% 15%, #d5d9ff 0%, transparent 46%),
+        linear-gradient(145deg, #f8fbff, #e4eeff);
+}
+
+/* =========================================
+   06 - SINKING ISLAND: ESCURO
+========================================= */
+
+body.preview-island.preview-dark {
+    color-scheme: dark;
+
+    --page-bg: #062c44;
+    --panel: #10213deb;
+    --field: #1b2c49;
+    --text: #f8faff;
+    --muted: #aebfd5;
+    --border: #946c50;
+    --accent: #12aaff;
+    --button-text: #ffffff;
+
+    --button-bg: linear-gradient(180deg, #159fff, #0062dc);
+
+    --scene:
+        radial-gradient(ellipse at 18% 12%, #12664f 0%, transparent 43%),
+        radial-gradient(ellipse at 85% 60%, #087a86 0%, transparent 50%),
+        linear-gradient(175deg, #09213c, #00618b);
+}
+
+/* =========================================
+   07 - SINKING ISLAND: CLARO
+========================================= */
+
+body.preview-island.preview-light {
+    color-scheme: light;
+
+    --page-bg: #87d6e9;
+    --panel: #fff8ebf3;
+    --field: #ffffff;
+    --text: #172a4b;
+    --muted: #6b8195;
+    --border: #dfb98b;
+    --accent: #008cff;
+    --button-text: #ffffff;
+
+    --button-bg: linear-gradient(180deg, #159fff, #0062dc);
+
+    --scene:
+        radial-gradient(ellipse at 14% 10%, #bbefa7 0%, transparent 42%),
+        radial-gradient(ellipse at 85% 80%, #23b5d9 0%, transparent 45%),
+        linear-gradient(175deg, #a3e0ff, #30b9db);
+}
+
+/* =========================================
+   13 - OUTRAS SEÇÕES DA MAIN
+========================================= */
+
+.layout-right > section {
+    width: 100%;
+    max-width: 680px;
+
+    margin: 0px;
+    padding: 18px;
+
+    background: var(--panel);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+}
+
+.layout-right > section h2 {
+    margin-top: 0;
+}
+
+/* =========================================
+   14 - APRESENTAÇÃO EM TELAS MENORES
+========================================= */
+
+@media (max-width: 480px) {
+    main {
+        padding: 12px;
+    }
+
+    .task-card {
+        padding: 17px;
+    }
+
+    .task-card-header h2 {
+        font-size: 18px;
+    }
+}
