@@ -36,3 +36,91 @@ taskForm.addEventListener("submit", function (event) {
 
     console.log("Tarefa cadastrada:", createdTask);
 });
+
+/* ISSUE #12: ATUALIZAÇÃO DE PRAZOS E URGÊNCIA */
+
+(function () {
+    "use strict";
+
+    const EVENT_NAME = "tasks:urgency-changed";
+
+    if (window.TaskUrgencyUpdates) {
+        return;
+    }
+
+    let currentSnapshot = null;
+    let midnightTimeoutId = null;
+
+    // Calcula as urgências das tarefas armazenadas.
+    function refreshTaskUrgencies() {
+        try {
+            const referenceDate = new Date();
+            const tasks = window.TaskStorage.getTasks();
+
+            const urgencies = tasks.map(function (task) {
+                return {
+                    id: task.id,
+                    urgency: window.TaskDeadlines.getTaskUrgency(
+                        task,
+                        referenceDate,
+                    ),
+                };
+            });
+
+            const nextSnapshot = {
+                calculatedAt: referenceDate.toISOString(),
+                urgencies,
+            };
+
+            currentSnapshot = nextSnapshot;
+
+            // Avisa os temas que os valores foram atualizados.
+            window.dispatchEvent(
+                new CustomEvent(EVENT_NAME, {
+                    detail: nextSnapshot,
+                }),
+            );
+
+            return nextSnapshot;
+        } catch (error) {
+            console.error("Não foi possível atualizar as urgências.", error);
+
+            return null;
+        }
+    }
+
+    // Agenda a atualização para a próxima meia-noite local.
+    function scheduleNextLocalMidnight() {
+        window.clearTimeout(midnightTimeoutId);
+
+        const now = new Date();
+        const nextMidnight = new Date(now);
+
+        nextMidnight.setHours(24, 0, 0, 0);
+
+        const delay = nextMidnight.getTime() - now.getTime();
+
+        midnightTimeoutId = window.setTimeout(function () {
+            refreshTaskUrgencies();
+            scheduleNextLocalMidnight();
+        }, delay);
+    }
+
+    // Disponibiliza o último resultado aos três temas.
+    window.TaskUrgencyUpdates = {
+        EVENT_NAME,
+
+        getSnapshot() {
+            return currentSnapshot;
+        },
+    };
+
+    // Atualiza quando uma tarefa é criada, editada ou excluída.
+    window.TaskEvents.subscribe(refreshTaskUrgencies);
+
+    // Executa o cálculo inicial.
+    refreshTaskUrgencies();
+
+    // Inicia o monitoramento da virada do dia.
+    scheduleNextLocalMidnight();
+})();
