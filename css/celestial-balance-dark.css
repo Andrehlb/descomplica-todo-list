@@ -7,7 +7,7 @@ body.preview-celestial.preview-dark .layout-center {
     --sol-lua-x: 10px;
     --sol-lua-y: -120px;
     --sol-lua-size: 72% auto;
-    --astral-x: 30px;
+    --astral-x: 33px;
     --astral-y: -110px;
     --astral-size: 100% auto;
     background-image:
@@ -32,6 +32,15 @@ body.preview-celestial.preview-dark .layout-center {
             minmax(0, 26fr);
         gap: 3px;
         --celestial-height: max(0px, calc(100svh - 90px));
+    }
+    body.preview-celestial.preview-dark .layout-center {
+        /* Estende a área onde o desenho pode aparecer, acima dos cards. */
+        margin-top: -68px;
+        border-top: 128px solid transparent;
+
+        /* Mantém a posição do desenho e permite pintá-lo na borda transparente. */
+        background-origin: padding-box;
+        background-clip: border-box;
     }
 }
 body.preview-celestial.preview-dark .layout-left {
@@ -60,7 +69,29 @@ body.preview-celestial.preview-dark .layout-right {
         grid-template-rows: minmax(0, 58fr) minmax(0, 42fr);
         gap: 26px;
     }
+
+    body.preview-celestial.preview-dark .layout-right {
+        height: calc(100svh - 110px);
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    body.preview-celestial.preview-dark
+        .layout-right
+        > section[aria-labelledby="task-list-heading"] {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+
+    body.preview-celestial.preview-dark #tasks-list {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+    }
 }
+
 body.preview-celestial.preview-dark
     > .construction-slot[data-feature="appearance-modes"] {
     position: absolute;
@@ -334,6 +365,19 @@ body.preview-celestial.preview-dark #tasks-list {
     list-style: none;
 }
 
+body.preview-celestial.preview-dark #tasks-list > .task-card {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+}
+
+body.preview-celestial.preview-dark #tasks-list > .task-card > h3 {
+    margin: 0 0 4px;
+}
+
+body.preview-celestial.preview-dark #tasks-list > .task-card > p {
+    margin: 4px 0;
+}
+
 body.preview-celestial.preview-dark .celestial-task {
     display: flex;
     align-items: center;
@@ -509,6 +553,14 @@ body.preview-celestial.preview-dark .celestial-task__complete {
             inset 0 0 0 1px rgba(255, 224, 160, 0.05);
     }
 
+    body.preview-celestial.preview-dark
+        .layout-right
+        > section[aria-labelledby="progress-heading"] {
+        flex: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     body.preview-celestial.preview-dark .layout-left .orbit-description {
         display: none;
     }
@@ -544,7 +596,7 @@ body.preview-celestial.preview-dark .celestial-task__complete {
         min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 14px;
     }
 
     body.preview-celestial.preview-dark .layout-left .form-field {
@@ -880,4 +932,341 @@ body.preview-celestial.preview-dark .celestial-task__complete:focus-visible {
         color: #ffffff;
         box-shadow: 0 0 10px rgba(130, 148, 255, 0.35);
     }
+}
+
+body.preview-celestial.preview-dark .task-card .add-task-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.5rem 2rem;
+
+    border: 1px solid #ffe4a0;
+    border-radius: 1rem;
+    background: linear-gradient(180deg, #ffe6a5 0%, #f9c761 55%, #eaaa40 100%);
+    box-shadow:
+        inset 0 1px 5px #fff2c9,
+        0 0 14px rgba(255, 186, 68, 0.55);
+
+    color: #392306;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: none;
+}
+
+body.preview-celestial.preview-dark .task-card .add-task-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0.9rem;
+    width: 15px;
+    height: 20px;
+    transform: translateY(-50%);
+    background: #fffdf2;
+    clip-path: polygon(
+        50% 0%,
+        62% 38%,
+        100% 50%,
+        62% 62%,
+        50% 100%,
+        38% 62%,
+        0% 50%,
+        38% 38%
+    );
+    pointer-events: none;
+}
+
+/* =========================================================
+   TOPO DO CELESTIAL BALANCE — TEMA ESCURO
+   ========================================================= */
+
+body.preview-celestial.preview-dark .celestial-header--editorial {
+    /* Desktop: as duas colunas laterais iguais centralizam a frase. */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(12px, 2vw, 32px);
+    /* Deixa o fundo geral aparecer por toda a faixa do topo. */
+    background: transparent;
+
+    /* A faixa pode crescer se o conteúdo precisar de mais altura. */
+    box-sizing: border-box;
+    padding: 0px clamp(20px, 5.5vw, 88px);
+
+    color: #f7f1e6;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__center {
+    display: grid;
+    justify-items: center;
+    position: relative; /* Aqui, o divisor será posicionado em relação à caixa da frase. */
+    gap: 4px;
+    text-align: center;
+
+    /* Deixa a imagem de fundo aparecer atrás da frase e do divisor. */
+    background: transparent;
+}
+
+/* Alinhamento das imagens e do texto dentro das laterais. */
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    :is(
+        .celestial-header__brand,
+        .celestial-header__right,
+        .celestial-header__ornaments
+    ) {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: clamp(8px, 1.2vw, 20px);
+}
+
+/* ESQUERDA — Emblema, título e subtítulo. */
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__emblem {
+    display: block;
+    width: clamp(56px, 6vw, 92px);
+    height: auto;
+    flex: none;
+    translate: -120px 0;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__titles
+    h1 {
+    margin: 0;
+    color: inherit;
+    font:
+        600 clamp(1.55rem, 2.65vw, 2.7rem) / 1.04 Georgia,
+        serif;
+    letter-spacing: 0;
+    translate: -90px 0;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__titles
+    p {
+    margin: 5px 0 0;
+    color: #e6dcca;
+    font:
+        500 clamp(0.58rem, 0.92vw, 0.95rem) / 1.3 system-ui,
+        sans-serif;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    translate: -90px 0;
+}
+
+/* CENTRO — Frase em itálico com o divisor dourado abaixo. */
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__center {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__motto {
+    position: static;
+    margin: 0;
+    color: inherit;
+    font:
+        italic clamp(1rem, 1.45vw, 1.45rem) / 1.2 Georgia,
+        serif;
+    translate: 0 -20px;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__divider {
+    /* Coloca o divisor 2px abaixo da frase, sem aumentar a altura do topo. */
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    translate: 0 -20px;
+
+    /* Exibe a faixa central do PNG, onde ficam a estrela e as linhas. */
+    display: block;
+    width: clamp(150px, 15vw, 240px);
+    max-width: 100%;
+    height: clamp(18px, 1.8vw, 28px);
+    object-fit: cover;
+    object-position: center;
+}
+
+/* DIREITA — Rosa dos ventos e luas, seguidas pela engrenagem. */
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    :is(.celestial-header__right, .celestial-header__ornaments) {
+    justify-content: flex-end;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__ornaments {
+    position: static;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__compass {
+    display: block;
+    width: clamp(38px, 4.6vw, 72px);
+    height: auto;
+    flex: none;
+    translate: 120px 0;
+}
+
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__moons {
+    display: block;
+    width: clamp(120px, 16vw, 258px);
+    min-width: 0;
+    height: auto;
+    translate: 200px 0;
+}
+
+/* Círculo ao redor da engrenagem decorativa. */
+body.preview-celestial.preview-dark
+    .celestial-header--editorial
+    .celestial-header__settings {
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #c4b8e04d;
+    border-radius: 50%;
+    background: #101836a6;
+    color: #e6e2f5;
+    font:
+        1.4rem / 1 system-ui,
+        sans-serif;
+}
+
+/* Desktop — topo compacto e espaçamento proporcional entre os elementos. */
+@media (min-width: 1200px) and (orientation: landscape) {
+    body.preview-celestial.preview-dark .celestial-header--editorial {
+        /* Distância entre a marca, a frase e os ornamentos. */
+        column-gap: 34px;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__brand {
+        /* Aproxima a marca da frase dentro da coluna esquerda. */
+        justify-self: end;
+
+        /* Distância entre o emblema e o título. */
+        gap: 21px;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__right {
+        /* Aproxima os ornamentos da frase dentro da coluna direita. */
+        justify-self: start;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__ornaments {
+        /* Distância entre a rosa dos ventos e a faixa das luas. */
+        gap: 13px;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__emblem {
+        /* Aproxima a altura do emblema da altura do título com subtítulo. */
+        width: 64px;
+        height: auto;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__compass {
+        width: 52px;
+        height: auto;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__moons {
+        /* As sete luas ficam na faixa central do PNG.
+           Esta proporção recorta a sobra transparente vertical. */
+        width: clamp(160px, 16vw, 258px);
+        height: auto;
+        aspect-ratio: 7 / 1;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* TELAS MÉDIAS — Frase e divisor passam para a segunda linha. */
+@media (max-width: 1050px) {
+    body.preview-celestial.preview-dark .celestial-header--editorial {
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding-inline: clamp(16px, 3vw, 32px);
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__center {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+}
+
+/* CELULAR — Engrenagem na primeira linha e ornamentos na terceira. */
+@media (max-width: 640px) {
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__right {
+        /* Os filhos passam a ser posicionados diretamente na grade do topo. */
+        display: contents;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__settings {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__ornaments {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-content: center;
+    }
+
+    body.preview-celestial.preview-dark
+        .celestial-header--editorial
+        .celestial-header__moons {
+        width: clamp(140px, 45vw, 230px);
+    }
+}
+
+body.preview-celestial.preview-dark #tasks-summary {
+    margin: 8px 0 0;
+    font-size: clamp(0.72rem, 0.85vw, 0.85rem);
+    line-height: 1.35;
+    overflow-wrap: normal;
 }
