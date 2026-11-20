@@ -1,0 +1,101 @@
+.orbit-system {
+  --orbit-planet-urgent-color: #e5484d;
+  --orbit-planet-attention-color: #f5b324;
+  --orbit-planet-distant-color: #2f6fed;
+  --orbit-planet-size: clamp(1rem, 4.5%, 1.9rem);
+  --orbit-planet-highlight-color: rgb(255 255 255 / 0.55);
+
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.orbit-system__orbits,
+.orbit-system__planets {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--orbit-diameter);
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border, #9fb0d9);
+  border-radius: 50%;
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-ring--dashed {
+  border-style: dashed;
+}
+
+.orbit-planet {
+  --orbit-planet-color: var(--orbit-planet-distant-color);
+
+  position: absolute;
+  top: calc(50% + var(--planet-y));
+  left: calc(50% + var(--planet-x));
+  width: var(--orbit-planet-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--orbit-planet-highlight-color),
+    var(--orbit-planet-color) 45%
+  );
+  box-shadow: 0 0 0.75rem var(--orbit-planet-color);
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  transition:
+    top 0.6s ease,
+    left 0.6s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.orbit-planet--urgent {
+  --orbit-planet-color: var(--orbit-planet-urgent-color);
+}
+
+.orbit-planet--attention {
+  --orbit-planet-color: var(--orbit-planet-attention-color);
+}
+
+.orbit-planet--distant {
+  --orbit-planet-color: var(--orbit-planet-distant-color);
+}
+
+.orbit-planet:hover,
+.orbit-planet:focus-visible {
+  box-shadow: 0 0 1.25rem var(--orbit-planet-color);
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+.orbit-planet:focus-visible {
+  outline: 2px solid var(--color-primary, #5b6cff);
+  outline-offset: 3px;
+}
+
+.orbit-planet__title {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 50%;
+  color: var(--color-text, #1d2340);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-planet {
+    transition: none;
+  }
+}
